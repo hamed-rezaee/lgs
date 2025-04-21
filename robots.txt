@@ -1,0 +1,25 @@
+# robots.txt for lgsim.io - Single Page Application
+
+User-agent: *
+Allow: /
+Allow: /icons/
+Allow: /assets/
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://lgsim.io/sitemap.xml
+
+# Major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
