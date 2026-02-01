@@ -109,9 +109,8 @@ Defines internal memory that persists between clock cycles. This is only valid i
 
 All statements in the logic body must end with a semicolon `;`. Header declarations do not use semicolons.
 
-```plaintext
+```c
 inputs: A, B  # No semicolon in header
-
 val = A + B;  # Semicolon required
 ```
 
@@ -149,7 +148,7 @@ Comments start with the hash symbol `#` and continue to the end of the line. The
 ### Reserved Keywords
 
 The following words are reserved and cannot be used as variable names:
-`if`, `else`, `true`, `false`, `var`, `inputs`, `outputs`, `state`, `clock`, `vars`.
+`if`, `else`, `for`, `while`, `break`, `continue`, `true`, `false`, `var`, `inputs`, `outputs`, `state`, `clock`, `vars`, `random`, `abs`, `min`, `max`, `popcount`.
 
 ---
 
@@ -246,6 +245,118 @@ max = (A > B) ? A : B;
 
 ---
 
+## Built-in Functions
+
+---
+
+The language provides built-in functions that can be called in expressions.
+
+### abs(x)
+
+Returns the absolute value of a number.
+
+- **One argument**: `abs(x)` returns the absolute value of `x`.
+
+_Examples_:
+
+```c
+# Get absolute value
+distance = abs(-15);  # Returns 15
+result = abs(A - B);  # Always positive difference
+```
+
+### min(a, b)
+
+Returns the smaller of two values.
+
+- **Two arguments**: `min(a, b)` returns whichever value is smaller.
+
+_Examples_:
+
+```c
+# Find minimum of two values
+smaller = min(A, B);
+
+# Clamp a value to maximum
+limited = min(value, 255);
+```
+
+### max(a, b)
+
+Returns the larger of two values.
+
+- **Two arguments**: `max(a, b)` returns whichever value is larger.
+
+_Examples_:
+
+```c
+# Find maximum of two values
+larger = max(A, B);
+
+# Ensure minimum value
+positive = max(value, 0);
+```
+
+### random()
+
+Generates pseudo-random integer values.
+
+- **No arguments**: `random()` returns either `0` or `1` (random bit).
+- **One argument**: `random(max)` returns a random integer from `0` to `max-1` (inclusive).
+
+_Examples_:
+
+```c
+# Generate a random bit (0 or 1)
+coin_flip = random();
+
+# Generate a random number from 0 to 15
+dice = random(16);
+
+# Generate random 4-bit value
+random_data[4] = random(16);
+```
+
+> **Note**: Each call to `random()` produces a new pseudo-random value. The random number generator is automatically seeded.
+
+### popcount(x)
+
+Counts the number of set bits (1s) in a value.
+
+- **One argument**: `popcount(x)` returns the count of 1-bits in `x`.
+
+_Examples_:
+
+```c
+# Count set bits
+ones = popcount(0x0B);  # Returns 3
+
+# Parity check (odd/even number of 1s)
+parity = popcount(data) & 1;
+
+# Hamming weight
+weight = popcount(value);
+```
+
+> **Note**: `popcount()` is particularly useful for parity generation, error detection, and population count operations in digital circuits.
+
+_Examples_:
+
+```c
+# Generate a random bit (0 or 1)
+coin_flip = random();
+
+# Generate a random number from 0 to 15
+dice = random(16);
+
+# Generate random 4-bit value
+random_data[4] = random(16);
+```
+
+> **Note**: Each call to `random()` produces a new pseudo-random value. The random number generator is automatically seeded.
+
+---
+
 ## Control Flow
 
 ---
@@ -256,17 +367,116 @@ Use `if` statements to execute code conditionally.
 
 - **Syntax**:
 
-  ```c
-  if (condition) {
-      # statements
-  } else if (another_condition) {
-      # statements
-  } else {
-      # statements
-  }
-  ```
+```c
+if (condition) {
+  # statements
+} else if (another_condition) {
+  # statements
+} else {
+  # statements
+}
+```
 
-  > **Note**: Curly braces `{ }` are required for the code blocks.
+> **Note**: Curly braces `{ }` are required for the code blocks.
+
+### For Loops
+
+Use `for` loops to repeat code a specific number of times.
+
+- **Syntax**:
+
+```c
+for (initialization; condition; update) {
+  # statements
+}
+```
+
+- **Parts**:
+  - `initialization`: Executed once before the loop starts (optional). Can be a variable declaration or expression.
+  - `condition`: Evaluated before each iteration. Loop continues while true/non-zero (optional).
+  - `update`: Executed after each iteration (optional).
+
+- **Examples**:
+
+```c
+# Count from 0 to 9
+for (var i = 0; i < 10; i = i + 1) {
+  # Loop body
+}
+
+# Sum array elements
+var sum = 0;
+for (var i = 0; i < 8; i = i + 1) {
+  sum = sum + data[i];
+}
+
+# Infinite loop (condition omitted)
+for (;;) {
+  # Loop forever (use break to exit)
+}
+```
+
+### While Loops
+
+Use `while` loops to repeat code as long as a condition is true.
+
+- **Syntax**:
+
+```c
+while (condition) {
+  # statements
+}
+```
+
+- **Examples**:
+
+```c
+# Countdown
+var count = 10;
+while (count > 0) {
+  count = count - 1;
+}
+
+# Find first set bit
+var value = 0xF0;
+var bit_pos = 0;
+while ((value & 1) == 0 && bit_pos < 8) {
+  value = value >> 1;
+  bit_pos = bit_pos + 1;
+}
+```
+
+### Break and Continue
+
+Control loop execution with `break` and `continue` statements.
+
+- **break**: Immediately exit the innermost loop.
+- **continue**: Skip to the next iteration of the innermost loop.
+
+- **Examples**:
+
+```c
+# Find first match
+var found = 0;
+for (var i = 0; i < 16; i = i + 1) {
+  if (array[i] == target) {
+    found = 1;
+    break;  # Exit loop early
+  }
+}
+
+# Skip even numbers
+var sum = 0;
+for (var i = 0; i < 10; i = i + 1) {
+  if ((i & 1) == 0) {
+    continue;  # Skip even numbers
+  }
+
+  sum = sum + i;
+}
+```
+
+> **Note**: Break and continue only affect the innermost loop they are in.
 
 ---
 
@@ -278,7 +488,7 @@ Use `if` statements to execute code conditionally.
 
 This script creates a simple Arithmetic Logic Unit. It has no clock, so outputs update immediately when inputs change.
 
-```plaintext
+```c
 # Header Declarations
 inputs: PacketA[4], PacketB[4], OpCode[2]
 outputs: Result[4], IsZero
@@ -289,31 +499,31 @@ var val = 0; # Temporary variable
 
 # Determine operation based on OpCode
 if (OpCode == 0) {
-    # Addition
-    val = PacketA + PacketB;
+  # Addition
+  val = PacketA + PacketB;
 } else if (OpCode == 1) {
-    # Subtraction
-    val = PacketA - PacketB;
+  # Subtraction
+  val = PacketA - PacketB;
 } else if (OpCode == 2) {
-    # Bitwise AND
-    val = PacketA & PacketB;
+  # Bitwise AND
+  val = PacketA & PacketB;
 } else {
-    # Bitwise OR
-    val = PacketA | PacketB;
+  # Bitwise OR
+  val = PacketA | PacketB;
 }
 
 # Assign result to output
 Result = val;
 
 # Set Zero flag using ternary operator
-IsZero = (Result == 0) ? 1 : 0;
+IsZero = (Result == 0) ? 1: 0;
 ```
 
 ### Example 2: Sequential Logic (Counter)
 
 This creates an 8-bit counter that increments on every clock cycle. It requires `clock` and `state`.
 
-```plaintext
+```c
 # Header Declarations
 clock: CLK
 inputs: Reset, Enable
@@ -323,13 +533,13 @@ state: internal_count[8] # Persistent memory
 # Body Logic
 
 if (Reset) {
-    # Reset counter to 0
-    internal_count = 0;
+  # Reset counter to 0
+  internal_count = 0;
 } else {
-    if (Enable) {
-        # Increment counter
-        internal_count = internal_count + 1;
-    }
+  if (Enable) {
+    # Increment counter
+    internal_count = internal_count + 1;
+  }
 }
 
 # Output the internal state
@@ -340,7 +550,7 @@ Count = internal_count;
 
 A 4x4 RAM module that demonstrates array indexing for memory storage.
 
-```plaintext
+```c
 # Header Declarations
 clock: CLK
 inputs: Address[2], DataIn[4], WriteEnable, ReadEnable
@@ -351,16 +561,86 @@ state: memory[4][4] # 2D Array: 4 rows of 4 bits
 
 # Write Operation
 if (WriteEnable) {
-    # Store DataIn into the row specified by Address
-    memory[Address] = DataIn;
+  # Store DataIn into the row specified by Address
+  memory[Address] = DataIn;
 }
 
 # Read Operation
 if (ReadEnable) {
-    # Read from the row specified by Address
-    DataOut = memory[Address];
+  # Read from the row specified by Address
+  DataOut = memory[Address];
 } else {
-    # Default output when not reading
-    DataOut = 0;
+  # Default output when not reading
+  DataOut = 0;
 }
+```
+
+### Example 4: Random Number Generator
+
+A simple component that generates random values for testing or probabilistic circuits.
+
+```c
+# Header Declarations
+inputs: Enable, Range[4]
+outputs: RandomValue[8], RandomBit
+
+# Body Logic
+
+if (Enable) {
+  # Generate random bit (0 or 1)
+  RandomBit = random();
+
+  # Generate random 8-bit value (0 to 255)
+  var maxValue = Range;
+  if (maxValue == 0) {
+    maxValue = 256;
+  }
+  RandomValue = random(maxValue);
+} else {
+  RandomBit = 0;
+  RandomValue = 0;
+}
+```
+
+### Example 5: Arithmetic Logic Unit (ALU) with Built-in Functions
+
+Demonstrates usage of `abs`, `min`, `max`, and `popcount` functions.
+
+```c
+# Header Declarations
+inputs: A[8], B[8], Operation[2]
+outputs: Result[8], Flags[4]
+
+# Body Logic
+
+var output = 0;
+var overflow = 0;
+var parity = 0;
+var ones_count = 0;
+
+if (Operation == 0) {
+  # Absolute difference
+  output = abs(A - B);
+} else if (Operation == 1) {
+  # Minimum value
+  output = min(A, B);
+} else if (Operation == 2) {
+  # Maximum value
+  output = max(A, B);
+} else {
+  # Bitwise AND with popcount
+  output = A & B;
+}
+
+# Calculate flags
+ones_count = popcount(output);
+parity = ones_count & 1; # Odd parity bit
+overflow = (output > 255) ? 1: 0;
+
+# Outputs
+Result = output;
+Flags[0] = parity; # Parity flag
+Flags[1] = overflow; # Overflow flag
+Flags[2] = (output == 0); # Zero flag
+Flags[3] = (ones_count > 4); # More than half bits set
 ```
