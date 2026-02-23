@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Custom Component Scripting Guide | lgs</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Custom Component Scripting Guide" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://www.lgsim.io/assets/assets/documents/script_syntax_guide.html" />
+<meta property="og:url" content="https://www.lgsim.io/assets/assets/documents/script_syntax_guide.html" />
+<meta property="og:site_name" content="lgs" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Custom Component Scripting Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Custom Component Scripting Guide","url":"https://www.lgsim.io/assets/assets/documents/script_syntax_guide.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=48412abdd94e9c28d0e231bde1dab930f052cbdd">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://www.lgsim.io/">lgs</a></h1>
+      
+
+      <h1 id="custom-component-scripting-guide">Custom Component Scripting Guide</h1>
+
+<p>The Logic Gate Simulator allows you to create custom components using a concise, C-like scripting language. This guide provides a complete reference to the language syntax, structure, and features, enabling you to build complex custom logic gates and chips.</p>
+
+<hr />
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li>Script Structure</li>
+  <li>Component Definitions
+    <ul>
+      <li>Inputs</li>
+      <li>Outputs</li>
+      <li>Clock</li>
+      <li>State</li>
+    </ul>
+  </li>
+  <li>Syntax and Language Features
+    <ul>
+      <li>Semicolons</li>
+      <li>Data Representation</li>
+      <li>Variables and Buses</li>
+      <li>Comments</li>
+    </ul>
+  </li>
+  <li>Operators
+    <ul>
+      <li>Arithmetic Operators</li>
+      <li>Comparison Operators</li>
+      <li>Logical Operators</li>
+      <li>Bitwise Operators</li>
+      <li>Assignment Operators</li>
+      <li>Conditional (Ternary) Operator</li>
+    </ul>
+  </li>
+  <li>Control Flow
+    <ul>
+      <li>If-Else Statements</li>
+    </ul>
+  </li>
+  <li>Complete Examples
+    <ul>
+      <li>Example 1: Combinatorial Logic (ALU)</li>
+      <li>Example 2: Sequential Logic (Counter)</li>
+      <li>Example 3: Random Access Memory (RAM)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="script-structure">Script Structure</h2>
+
+<hr />
+
+<p>Every script consists of two distinct sections:</p>
+
+<ol>
+  <li><strong>Header Declarations</strong>: Located at the very top, defining the interface (inputs/outputs) and internal memory.</li>
+  <li><strong>Logic Section</strong>: The procedural code that defines how outputs and state variables are updated based on inputs.</li>
+</ol>
+
+<hr />
+
+<h2 id="component-definitions">Component Definitions</h2>
+
+<hr />
+
+<p>The header section uses specific keywords to define your component’s pins and properties. Each declaration must be on its own line and appear <strong>before any logic code</strong>. Each section can be defined only <strong>once</strong>.</p>
+
+<h3 id="inputs">Inputs</h3>
+
+<p>Defines the input pins for your component.</p>
+
+<ul>
+  <li><strong>Keyword</strong>: <code class="language-plaintext highlighter-rouge">inputs:</code></li>
+  <li><strong>Syntax</strong>: Comma-separated list of names. Use brackets <code class="language-plaintext highlighter-rouge">[]</code> for multi-bit buses.</li>
+  <li><strong>Example</strong>: <code class="language-plaintext highlighter-rouge">inputs: Enable, Data[8], Select[2]</code></li>
+</ul>
+
+<h3 id="outputs">Outputs</h3>
+
+<p>Defines the output pins for your component.</p>
+
+<ul>
+  <li><strong>Keyword</strong>: <code class="language-plaintext highlighter-rouge">outputs:</code></li>
+  <li><strong>Syntax</strong>: Comma-separated list of names. Use brackets <code class="language-plaintext highlighter-rouge">[]</code> for multi-bit buses.</li>
+  <li><strong>Example</strong>: <code class="language-plaintext highlighter-rouge">outputs: Result[8], Overflow</code></li>
+</ul>
+
+<h3 id="variables">Variables</h3>
+
+<p>Defines local variables for use within the script. All variables are initialized to 0 before the script executes.</p>
+
+<ul>
+  <li><strong>Keyword</strong>: <code class="language-plaintext highlighter-rouge">vars:</code></li>
+  <li><strong>Syntax</strong>: Comma-separated list of names. Use brackets <code class="language-plaintext highlighter-rouge">[]</code> for arrays. Multi-dimensional arrays (e.g., <code class="language-plaintext highlighter-rouge">[4][4]</code>) are supported.</li>
+  <li><strong>Example</strong>: <code class="language-plaintext highlighter-rouge">vars: temp[4], counter</code></li>
+</ul>
+
+<blockquote>
+  <p><strong>Inline Declaration</strong>: Variables can also be declared in the body using the <code class="language-plaintext highlighter-rouge">var</code> keyword.</p>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">var temp = 1;</code> (Scalar declaration with initialization)</li>
+    <li><code class="language-plaintext highlighter-rouge">var arr[4];</code> (Array declaration)</li>
+    <li><code class="language-plaintext highlighter-rouge">var arr[4] = 15;</code> (Array declaration with assignment)</li>
+  </ul>
+
+  <p><strong>Scope</strong>: Variables must be declared before use. Declarations are effectively script-wide (hoisted), but initialization happens where the statement is located.</p>
+</blockquote>
+
+<h3 id="clock">Clock</h3>
+
+<p>Required only for sequential logic (components that have memory or state).</p>
+
+<ul>
+  <li><strong>Keyword</strong>: <code class="language-plaintext highlighter-rouge">clock:</code></li>
+  <li><strong>Syntax</strong>: A single name for the clock input pin.</li>
+  <li><strong>Behavior</strong>: The script body executes only on the <strong>rising edge</strong> of this signal (transition from 0 to 1).</li>
+  <li><strong>Example</strong>: <code class="language-plaintext highlighter-rouge">clock: CLK</code></li>
+</ul>
+
+<h3 id="state">State</h3>
+
+<p>Defines internal memory that persists between clock cycles. This is only valid if a <code class="language-plaintext highlighter-rouge">clock</code> is also defined.</p>
+
+<ul>
+  <li><strong>Keyword</strong>: <code class="language-plaintext highlighter-rouge">state:</code></li>
+  <li><strong>Syntax</strong>: names with dimensions. Can be single values, arrays, or 2D matrices.</li>
+  <li><strong>Example</strong>: <code class="language-plaintext highlighter-rouge">state: counter_val[8], ram[16][8]</code></li>
+</ul>
+
+<hr />
+
+<h2 id="syntax-and-language-features">Syntax and Language Features</h2>
+
+<hr />
+
+<h3 id="semicolons">Semicolons</h3>
+
+<p>All statements in the logic body must end with a semicolon <code class="language-plaintext highlighter-rouge">;</code>. Header declarations do not use semicolons.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">inputs:</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span>  <span class="err">#</span> <span class="n">No</span> <span class="n">semicolon</span> <span class="n">in</span> <span class="n">header</span>
+<span class="n">val</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">;</span>  <span class="err">#</span> <span class="n">Semicolon</span> <span class="n">required</span>
+</code></pre></div></div>
+
+<h3 id="data-representation">Data Representation</h3>
+
+<ul>
+  <li><strong>Integers</strong>: All variables are treated as 64-bit signed integers.</li>
+  <li><strong>Logic Levels</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">0</code> represents logic <strong>LOW</strong> (False).</li>
+      <li>Any non-zero value represents logic <strong>HIGH</strong> (True).</li>
+      <li>The keywords <code class="language-plaintext highlighter-rouge">true</code> (alias for <code class="language-plaintext highlighter-rouge">1</code>) and <code class="language-plaintext highlighter-rouge">false</code> (alias for <code class="language-plaintext highlighter-rouge">0</code>) are available.</li>
+    </ul>
+  </li>
+  <li><strong>Bus/Array Truncation</strong>: When assigning a large integer value to a declared array/bus (e.g., <code class="language-plaintext highlighter-rouge">Out[4] = 255</code>), the value is truncated. Only the bits that fit the array size (least significant bits) are applied.</li>
+  <li><strong>Number Formats</strong>:
+    <ul>
+      <li>Decimal: <code class="language-plaintext highlighter-rouge">123</code>, <code class="language-plaintext highlighter-rouge">-5</code></li>
+      <li>Hexadecimal: <code class="language-plaintext highlighter-rouge">0xFF</code>, <code class="language-plaintext highlighter-rouge">0x1A</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="variables-and-buses">Variables and Buses</h3>
+
+<p>Variables used in the script must be declared in one of the header sections (<code class="language-plaintext highlighter-rouge">inputs</code>, <code class="language-plaintext highlighter-rouge">outputs</code>, <code class="language-plaintext highlighter-rouge">state</code>, <code class="language-plaintext highlighter-rouge">vars</code>) or inline using the <code class="language-plaintext highlighter-rouge">var</code> keyword.</p>
+
+<ul>
+  <li><strong>Scalar Variables</strong>: Single values.
+    <ul>
+      <li><em>Example</em>: <code class="language-plaintext highlighter-rouge">var temp = A + B;</code></li>
+    </ul>
+  </li>
+  <li><strong>Arrays/Buses</strong>: Access specific bits or elements using <code class="language-plaintext highlighter-rouge">[]</code>. Indexing is 0-based.
+    <ul>
+      <li><em>Example</em>: <code class="language-plaintext highlighter-rouge">val = Data[0];</code> (Accesses the first bit/element)</li>
+      <li><em>Example</em>: <code class="language-plaintext highlighter-rouge">Data[2] = 1;</code> (Sets the third bit/element)</li>
+    </ul>
+  </li>
+  <li><strong>Full Bus Access</strong>: using the name without brackets handles the entire value.
+    <ul>
+      <li><em>Example</em>: <code class="language-plaintext highlighter-rouge">Result = Data;</code> (Copies all bits from Data to Result)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="comments">Comments</h3>
+
+<p>Comments start with the hash symbol <code class="language-plaintext highlighter-rouge">#</code> and continue to the end of the line. They can appear on their own line or after code.</p>
+
+<ul>
+  <li><em>Example</em>: <code class="language-plaintext highlighter-rouge"># This is a comment</code></li>
+  <li><em>Example</em>: <code class="language-plaintext highlighter-rouge">val = 1; # Valid inline comment</code></li>
+</ul>
+
+<h3 id="reserved-keywords">Reserved Keywords</h3>
+
+<p>The following words are reserved and cannot be used as variable names:
+<code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">else</code>, <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>, <code class="language-plaintext highlighter-rouge">break</code>, <code class="language-plaintext highlighter-rouge">continue</code>, <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>, <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">inputs</code>, <code class="language-plaintext highlighter-rouge">outputs</code>, <code class="language-plaintext highlighter-rouge">state</code>, <code class="language-plaintext highlighter-rouge">clock</code>, <code class="language-plaintext highlighter-rouge">vars</code>, <code class="language-plaintext highlighter-rouge">random</code>, <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">popcount</code>.</p>
+
+<hr />
+
+<h2 id="operators">Operators</h2>
+
+<hr />
+
+<p>The language supports a wide range of operators. They are listed below by category.</p>
+
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+
+<p>Perform standard mathematical calculations. Standard operator precedence applies (e.g., multiplication before addition).</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">+</code> : Addition</li>
+  <li><code class="language-plaintext highlighter-rouge">-</code> : Subtraction</li>
+  <li><code class="language-plaintext highlighter-rouge">*</code> : Multiplication</li>
+  <li><code class="language-plaintext highlighter-rouge">/</code> : Division (Integer division). Division by zero returns result <code class="language-plaintext highlighter-rouge">0</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">%</code> : Modulo (Remainder). Modulo by zero returns result <code class="language-plaintext highlighter-rouge">0</code>.</li>
+</ul>
+
+<p><em>Example</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">remainder</span> <span class="o">=</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">16</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="comparison-operators">Comparison Operators</h3>
+
+<p>Compare two values and return 1 (true) or 0 (false).</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">==</code> : Equal to</li>
+  <li><code class="language-plaintext highlighter-rouge">!=</code> : Not equal to</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;</code> : Less than</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;</code> : Greater than</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;=</code> : Less than or equal to</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;=</code> : Greater than or equal to</li>
+</ul>
+
+<p><em>Example</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_zero</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="logical-operators">Logical Operators</h3>
+
+<p>Perform boolean logic operations. Short-circuit evaluation is supported.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;&amp;</code> : Logical AND (true if both operands are true/non-zero).</li>
+  <li><code class="language-plaintext highlighter-rouge">||</code> : Logical OR (true if either operand is true/non-zero).</li>
+  <li><code class="language-plaintext highlighter-rouge">!</code> : Logical NOT (inverts the boolean value).</li>
+</ul>
+
+<p><em>Example</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">Enable</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">Reset</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="bitwise-operators">Bitwise Operators</h3>
+
+<p>Operate on the individual bits of integer values.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> : Bitwise AND</li>
+  <li><code class="language-plaintext highlighter-rouge">|</code> : Bitwise OR</li>
+  <li><code class="language-plaintext highlighter-rouge">^</code> : Bitwise XOR (Exclusive OR)</li>
+  <li><code class="language-plaintext highlighter-rouge">~</code> : Bitwise NOT (One’s complement)</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code> : Left Shift</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> : Right Shift</li>
+</ul>
+
+<p><em>Example</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">input</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>
+<span class="n">masked</span> <span class="o">=</span> <span class="n">input</span> <span class="o">&amp;</span> <span class="mh">0x0F</span><span class="p">;</span>  <span class="err">#</span> <span class="n">Keep</span> <span class="n">only</span> <span class="n">bottom</span> <span class="mi">4</span> <span class="n">bits</span> <span class="p">(</span><span class="n">binary</span> <span class="mi">1111</span><span class="p">)</span>
+<span class="n">shifted</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">;</span>      <span class="err">#</span> <span class="n">Result</span> <span class="n">is</span> <span class="mi">8</span> <span class="p">(</span><span class="n">binary</span> <span class="mi">1000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="assignment-operators">Assignment Operators</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">=</code> : Basic assignment. Sets the variable on the left to the value on the right.</li>
+</ul>
+
+<h3 id="conditional-ternary-operator">Conditional (Ternary) Operator</h3>
+
+<p>A shorthand for if-else statements.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">? :</code> : Format is <code class="language-plaintext highlighter-rouge">condition ? value_if_true : value_if_false</code></li>
+</ul>
+
+<p><em>Example</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># If A is greater than B, max is A, otherwise max is B
+</span><span class="n">max</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">&gt;</span> <span class="n">B</span><span class="p">)</span> <span class="o">?</span> <span class="n">A</span> <span class="o">:</span> <span class="n">B</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="built-in-functions">Built-in Functions</h2>
+
+<hr />
+
+<p>The language provides built-in functions that can be called in expressions.</p>
+
+<h3 id="absx">abs(x)</h3>
+
+<p>Returns the absolute value of a number.</p>
+
+<ul>
+  <li><strong>One argument</strong>: <code class="language-plaintext highlighter-rouge">abs(x)</code> returns the absolute value of <code class="language-plaintext highlighter-rouge">x</code>.</li>
+</ul>
+
+<p><em>Examples</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Get absolute value
+</span><span class="n">distance</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">);</span>  <span class="err">#</span> <span class="n">Returns</span> <span class="mi">15</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">);</span>  <span class="err">#</span> <span class="n">Always</span> <span class="n">positive</span> <span class="n">difference</span>
+</code></pre></div></div>
+
+<h3 id="mina-b">min(a, b)</h3>
+
+<p>Returns the smaller of two values.</p>
+
+<ul>
+  <li><strong>Two arguments</strong>: <code class="language-plaintext highlighter-rouge">min(a, b)</code> returns whichever value is smaller.</li>
+</ul>
+
+<p><em>Examples</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Find minimum of two values
+</span><span class="n">smaller</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+
+<span class="cp"># Clamp a value to maximum
+</span><span class="n">limited</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="maxa-b">max(a, b)</h3>
+
+<p>Returns the larger of two values.</p>
+
+<ul>
+  <li><strong>Two arguments</strong>: <code class="language-plaintext highlighter-rouge">max(a, b)</code> returns whichever value is larger.</li>
+</ul>
+
+<p><em>Examples</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Find maximum of two values
+</span><span class="n">larger</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+
+<span class="cp"># Ensure minimum value
+</span><span class="n">positive</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="random">random()</h3>
+
+<p>Generates pseudo-random integer values.</p>
+
+<ul>
+  <li><strong>No arguments</strong>: <code class="language-plaintext highlighter-rouge">random()</code> returns either <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">1</code> (random bit).</li>
+  <li><strong>One argument</strong>: <code class="language-plaintext highlighter-rouge">random(max)</code> returns a random integer from <code class="language-plaintext highlighter-rouge">0</code> to <code class="language-plaintext highlighter-rouge">max-1</code> (inclusive).</li>
+</ul>
+
+<p><em>Examples</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Generate a random bit (0 or 1)
+</span><span class="n">coin_flip</span> <span class="o">=</span> <span class="n">random</span><span class="p">();</span>
+
+<span class="cp"># Generate a random number from 0 to 15
+</span><span class="n">dice</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+
+<span class="cp"># Generate random 4-bit value
+</span><span class="n">random_data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note</strong>: Each call to <code class="language-plaintext highlighter-rouge">random()</code> produces a new pseudo-random value. The random number generator is automatically seeded.</p>
+</blockquote>
+
+<h3 id="popcountx">popcount(x)</h3>
+
+<p>Counts the number of set bits (1s) in a value.</p>
+
+<ul>
+  <li><strong>One argument</strong>: <code class="language-plaintext highlighter-rouge">popcount(x)</code> returns the count of 1-bits in <code class="language-plaintext highlighter-rouge">x</code>.</li>
+</ul>
+
+<p><em>Examples</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Count set bits
+</span><span class="n">ones</span> <span class="o">=</span> <span class="n">popcount</span><span class="p">(</span><span class="mh">0x0B</span><span class="p">);</span>  <span class="err">#</span> <span class="n">Returns</span> <span class="mi">3</span>
+
+<span class="cp"># Parity check (odd/even number of 1s)
+</span><span class="n">parity</span> <span class="o">=</span> <span class="n">popcount</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="cp"># Hamming weight
+</span><span class="n">weight</span> <span class="o">=</span> <span class="n">popcount</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note</strong>: <code class="language-plaintext highlighter-rouge">popcount()</code> is particularly useful for parity generation, error detection, and population count operations in digital circuits.</p>
+</blockquote>
+
+<p><em>Examples</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Generate a random bit (0 or 1)
+</span><span class="n">coin_flip</span> <span class="o">=</span> <span class="n">random</span><span class="p">();</span>
+
+<span class="cp"># Generate a random number from 0 to 15
+</span><span class="n">dice</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+
+<span class="cp"># Generate random 4-bit value
+</span><span class="n">random_data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note</strong>: Each call to <code class="language-plaintext highlighter-rouge">random()</code> produces a new pseudo-random value. The random number generator is automatically seeded.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="control-flow">Control Flow</h2>
+
+<hr />
+
+<h3 id="if-else-statements">If-Else Statements</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">if</code> statements to execute code conditionally.</p>
+
+<ul>
+  <li><strong>Syntax</strong>:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># statements
+</span><span class="p">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">another_condition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># statements
+</span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="cp"># statements
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note</strong>: Curly braces <code class="language-plaintext highlighter-rouge">{ }</code> are required for the code blocks.</p>
+</blockquote>
+
+<h3 id="for-loops">For Loops</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">for</code> loops to repeat code a specific number of times.</p>
+
+<ul>
+  <li><strong>Syntax</strong>:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">initialization</span><span class="p">;</span> <span class="n">condition</span><span class="p">;</span> <span class="n">update</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># statements
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Parts</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">initialization</code>: Executed once before the loop starts (optional). Can be a variable declaration or expression.</li>
+      <li><code class="language-plaintext highlighter-rouge">condition</code>: Evaluated before each iteration. Loop continues while true/non-zero (optional).</li>
+      <li><code class="language-plaintext highlighter-rouge">update</code>: Executed after each iteration (optional).</li>
+    </ul>
+  </li>
+  <li><strong>Examples</strong>:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Count from 0 to 9
+</span><span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Loop body
+</span><span class="p">}</span>
+
+<span class="cp"># Sum array elements
+</span><span class="n">var</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="cp"># Infinite loop (condition omitted)
+</span><span class="k">for</span> <span class="p">(;;)</span> <span class="p">{</span>
+  <span class="cp"># Loop forever (use break to exit)
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="while-loops">While Loops</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">while</code> loops to repeat code as long as a condition is true.</p>
+
+<ul>
+  <li><strong>Syntax</strong>:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># statements
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Examples</strong>:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Countdown
+</span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp"># Find first set bit
+</span><span class="n">var</span> <span class="n">value</span> <span class="o">=</span> <span class="mh">0xF0</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">bit_pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">((</span><span class="n">value</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">bit_pos</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">bit_pos</span> <span class="o">=</span> <span class="n">bit_pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="break-and-continue">Break and Continue</h3>
+
+<p>Control loop execution with <code class="language-plaintext highlighter-rouge">break</code> and <code class="language-plaintext highlighter-rouge">continue</code> statements.</p>
+
+<ul>
+  <li><strong>break</strong>: Immediately exit the innermost loop.</li>
+  <li>
+    <p><strong>continue</strong>: Skip to the next iteration of the innermost loop.</p>
+  </li>
+  <li><strong>Examples</strong>:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Find first match
+</span><span class="n">var</span> <span class="n">found</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>  <span class="err">#</span> <span class="n">Exit</span> <span class="n">loop</span> <span class="n">early</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp"># Skip even numbers
+</span><span class="n">var</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">((</span><span class="n">i</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">continue</span><span class="p">;</span>  <span class="err">#</span> <span class="n">Skip</span> <span class="n">even</span> <span class="n">numbers</span>
+  <span class="p">}</span>
+
+  <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note</strong>: Break and continue only affect the innermost loop they are in.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="complete-examples">Complete Examples</h2>
+
+<hr />
+
+<h3 id="example-1-combinatorial-logic-alu">Example 1: Combinatorial Logic (ALU)</h3>
+
+<p>This script creates a simple Arithmetic Logic Unit. It has no clock, so outputs update immediately when inputs change.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Header Declarations
+</span><span class="nl">inputs:</span> <span class="n">PacketA</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">PacketB</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">OpCode</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">outputs</span><span class="o">:</span> <span class="n">Result</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">IsZero</span>
+
+<span class="cp"># Body Logic
+</span>
+<span class="n">var</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="err">#</span> <span class="n">Temporary</span> <span class="n">variable</span>
+
+<span class="cp"># Determine operation based on OpCode
+</span><span class="k">if</span> <span class="p">(</span><span class="n">OpCode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Addition
+</span>  <span class="n">val</span> <span class="o">=</span> <span class="n">PacketA</span> <span class="o">+</span> <span class="n">PacketB</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">OpCode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Subtraction
+</span>  <span class="n">val</span> <span class="o">=</span> <span class="n">PacketA</span> <span class="o">-</span> <span class="n">PacketB</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">OpCode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Bitwise AND
+</span>  <span class="n">val</span> <span class="o">=</span> <span class="n">PacketA</span> <span class="o">&amp;</span> <span class="n">PacketB</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="cp"># Bitwise OR
+</span>  <span class="n">val</span> <span class="o">=</span> <span class="n">PacketA</span> <span class="o">|</span> <span class="n">PacketB</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp"># Assign result to output
+</span><span class="n">Result</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+
+<span class="cp"># Set Zero flag using ternary operator
+</span><span class="n">IsZero</span> <span class="o">=</span> <span class="p">(</span><span class="n">Result</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="example-2-sequential-logic-counter">Example 2: Sequential Logic (Counter)</h3>
+
+<p>This creates an 8-bit counter that increments on every clock cycle. It requires <code class="language-plaintext highlighter-rouge">clock</code> and <code class="language-plaintext highlighter-rouge">state</code>.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Header Declarations
+</span><span class="nl">clock:</span> <span class="n">CLK</span>
+<span class="n">inputs</span><span class="o">:</span> <span class="n">Reset</span><span class="p">,</span> <span class="n">Enable</span>
+<span class="n">outputs</span><span class="o">:</span> <span class="n">Count</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">state</span><span class="o">:</span> <span class="n">internal_count</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="err">#</span> <span class="n">Persistent</span> <span class="n">memory</span>
+
+<span class="cp"># Body Logic
+</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">Reset</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Reset counter to 0
+</span>  <span class="n">internal_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Enable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cp"># Increment counter
+</span>    <span class="n">internal_count</span> <span class="o">=</span> <span class="n">internal_count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp"># Output the internal state
+</span><span class="n">Count</span> <span class="o">=</span> <span class="n">internal_count</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="example-3-random-access-memory-ram">Example 3: Random Access Memory (RAM)</h3>
+
+<p>A 4x4 RAM module that demonstrates array indexing for memory storage.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Header Declarations
+</span><span class="nl">clock:</span> <span class="n">CLK</span>
+<span class="n">inputs</span><span class="o">:</span> <span class="n">Address</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">DataIn</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">WriteEnable</span><span class="p">,</span> <span class="n">ReadEnable</span>
+<span class="n">outputs</span><span class="o">:</span> <span class="n">DataOut</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">state</span><span class="o">:</span> <span class="n">memory</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="err">#</span> <span class="mi">2</span><span class="n">D</span> <span class="n">Array</span><span class="o">:</span> <span class="mi">4</span> <span class="n">rows</span> <span class="n">of</span> <span class="mi">4</span> <span class="n">bits</span>
+
+<span class="cp"># Body Logic
+</span>
+<span class="cp"># Write Operation
+</span><span class="k">if</span> <span class="p">(</span><span class="n">WriteEnable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Store DataIn into the row specified by Address
+</span>  <span class="n">memory</span><span class="p">[</span><span class="n">Address</span><span class="p">]</span> <span class="o">=</span> <span class="n">DataIn</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp"># Read Operation
+</span><span class="k">if</span> <span class="p">(</span><span class="n">ReadEnable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Read from the row specified by Address
+</span>  <span class="n">DataOut</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="n">Address</span><span class="p">];</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="cp"># Default output when not reading
+</span>  <span class="n">DataOut</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="example-4-random-number-generator">Example 4: Random Number Generator</h3>
+
+<p>A simple component that generates random values for testing or probabilistic circuits.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Header Declarations
+</span><span class="nl">inputs:</span> <span class="n">Enable</span><span class="p">,</span> <span class="n">Range</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">outputs</span><span class="o">:</span> <span class="n">RandomValue</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">RandomBit</span>
+
+<span class="cp"># Body Logic
+</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">Enable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Generate random bit (0 or 1)
+</span>  <span class="n">RandomBit</span> <span class="o">=</span> <span class="n">random</span><span class="p">();</span>
+
+  <span class="cp"># Generate random 8-bit value (0 to 255)
+</span>  <span class="n">var</span> <span class="n">maxValue</span> <span class="o">=</span> <span class="n">Range</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">maxValue</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">maxValue</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">RandomValue</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="n">maxValue</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">RandomBit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">RandomValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="example-5-arithmetic-logic-unit-alu-with-built-in-functions">Example 5: Arithmetic Logic Unit (ALU) with Built-in Functions</h3>
+
+<p>Demonstrates usage of <code class="language-plaintext highlighter-rouge">abs</code>, <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">max</code>, and <code class="language-plaintext highlighter-rouge">popcount</code> functions.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Header Declarations
+</span><span class="nl">inputs:</span> <span class="n">A</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">Operation</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">outputs</span><span class="o">:</span> <span class="n">Result</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">Flags</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="cp"># Body Logic
+</span>
+<span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">overflow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">parity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">ones_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">Operation</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Absolute difference
+</span>  <span class="n">output</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">Operation</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Minimum value
+</span>  <span class="n">output</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">Operation</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cp"># Maximum value
+</span>  <span class="n">output</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="cp"># Bitwise AND with popcount
+</span>  <span class="n">output</span> <span class="o">=</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp"># Calculate flags
+</span><span class="n">ones_count</span> <span class="o">=</span> <span class="n">popcount</span><span class="p">(</span><span class="n">output</span><span class="p">);</span>
+<span class="n">parity</span> <span class="o">=</span> <span class="n">ones_count</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span> <span class="err">#</span> <span class="n">Odd</span> <span class="n">parity</span> <span class="n">bit</span>
+<span class="n">overflow</span> <span class="o">=</span> <span class="p">(</span><span class="n">output</span> <span class="o">&gt;</span> <span class="mi">255</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cp"># Outputs
+</span><span class="n">Result</span> <span class="o">=</span> <span class="n">output</span><span class="p">;</span>
+<span class="n">Flags</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">parity</span><span class="p">;</span> <span class="err">#</span> <span class="n">Parity</span> <span class="n">flag</span>
+<span class="n">Flags</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">overflow</span><span class="p">;</span> <span class="err">#</span> <span class="n">Overflow</span> <span class="n">flag</span>
+<span class="n">Flags</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">output</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="err">#</span> <span class="n">Zero</span> <span class="n">flag</span>
+<span class="n">Flags</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ones_count</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">);</span> <span class="err">#</span> <span class="n">More</span> <span class="n">than</span> <span class="n">half</span> <span class="n">bits</span> <span class="n">set</span>
+</code></pre></div></div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

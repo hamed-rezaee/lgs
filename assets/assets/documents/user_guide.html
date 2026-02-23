@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Logic Gate Simulator — User Guide | lgs</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Logic Gate Simulator — User Guide" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://www.lgsim.io/assets/assets/documents/user_guide.html" />
+<meta property="og:url" content="https://www.lgsim.io/assets/assets/documents/user_guide.html" />
+<meta property="og:site_name" content="lgs" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Logic Gate Simulator — User Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Logic Gate Simulator — User Guide","url":"https://www.lgsim.io/assets/assets/documents/user_guide.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=48412abdd94e9c28d0e231bde1dab930f052cbdd">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://www.lgsim.io/">lgs</a></h1>
+      
+
+      <h1 id="logic-gate-simulator--user-guide">Logic Gate Simulator — User Guide</h1>
+
+<p>This guide describes the <strong>actual features implemented in the app</strong> (menus, shortcuts, editor behavior, file formats, and built-in components).</p>
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#1-getting-started">1. Getting Started</a></li>
+  <li><a href="#2-workspace-basics">2. Workspace Basics</a></li>
+  <li><a href="#3-navigation--view">3. Navigation &amp; View</a></li>
+  <li><a href="#4-selecting-moving-copypaste-delete">4. Selecting, Moving, Copy/Paste, Delete</a></li>
+  <li><a href="#5-wiring">5. Wiring</a></li>
+  <li><a href="#6-simulation-controls">6. Simulation Controls</a></li>
+  <li><a href="#7-menus--commands">7. Menus &amp; Commands</a></li>
+  <li><a href="#8-files-importexport">8. Files, Import/Export</a></li>
+  <li><a href="#9-component-catalog">9. Component Catalog</a></li>
+  <li><a href="#10-programmable-components--scripting">10. Programmable Components &amp; Scripting</a></li>
+  <li><a href="#11-troubleshooting">11. Troubleshooting</a></li>
+</ul>
+
+<hr />
+
+<h2 id="1-getting-started">1. Getting Started</h2>
+
+<h3 id="build-a-first-circuit-30-seconds">Build a first circuit (30 seconds)</h3>
+
+<ol>
+  <li>Drag <strong>INPUT</strong> from the Components toolbar onto the canvas.</li>
+  <li>Drag a logic gate (for example <strong>AND</strong>) onto the canvas.</li>
+  <li>Drag <strong>OUTPUT</strong> onto the canvas.</li>
+  <li>Create wires by clicking pins (see <a href="#5-wiring">Wiring</a>).</li>
+  <li>Press <strong>Space</strong> to start/pause simulation.</li>
+  <li>Click the <strong>INPUT</strong> component to toggle it HIGH/LOW.</li>
+</ol>
+
+<h3 id="what-you-see-on-screen">What you see on screen</h3>
+
+<ul>
+  <li><strong>Top menu bar</strong>: File/Edit/View/Tools/Samples/Help.</li>
+  <li><strong>Components toolbar</strong> (left): searchable component palette (some items show <strong>PRO</strong>).</li>
+  <li><strong>Canvas</strong> (center): place components, draw wires, select/edit.</li>
+  <li>Optional:
+    <ul>
+      <li><strong>Minimap</strong> (toggleable)</li>
+      <li><strong>Status bar</strong> with contextual hints (toggleable)</li>
+      <li><strong>Keyboard shortcuts helper</strong> overlay (toggleable)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="2-workspace-basics">2. Workspace Basics</h2>
+
+<ul>
+  <li>A <strong>workspace</strong> is your current circuit (components + wires + some configuration).</li>
+  <li>You can <strong>save/load</strong> the current workspace to persistent app storage.</li>
+  <li>You can <strong>export/import</strong> workspaces as <code class="language-plaintext highlighter-rouge">.lgs</code> files.</li>
+  <li>You can load built-in <strong>sample</strong> workspaces from the Samples menu.</li>
+</ul>
+
+<hr />
+
+<h2 id="3-navigation--view">3. Navigation &amp; View</h2>
+
+<h3 id="pan-and-zoom">Pan and zoom</h3>
+
+<ul>
+  <li>Pan/zoom uses the canvas viewer controls (mouse/trackpad depending on platform).</li>
+</ul>
+
+<h3 id="reset-viewport">Reset viewport</h3>
+
+<ul>
+  <li>Use <strong>View → Reset Viewport</strong> or press <strong>R</strong>.</li>
+</ul>
+
+<h3 id="view-toggles">View toggles</h3>
+
+<p>Use <strong>View</strong> menu or the shortcuts:</p>
+
+<ul>
+  <li>Toggle <strong>Minimap</strong>: <strong>M</strong></li>
+  <li>Toggle <strong>Components toolbar</strong>: <strong>C</strong></li>
+  <li>Toggle <strong>Status bar</strong>: <strong>I</strong></li>
+  <li>Toggle <strong>Keyboard shortcuts helper</strong>: <strong>K</strong></li>
+  <li>Toggle <strong>Theme</strong> (Light/Dark): <strong>Ctrl+T</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="4-selecting-moving-copypaste-delete">4. Selecting, Moving, Copy/Paste, Delete</h2>
+
+<h3 id="selecting-components">Selecting components</h3>
+
+<ul>
+  <li>Click a component to select it.</li>
+  <li>Drag on empty canvas to draw a <strong>selection rectangle</strong>.</li>
+  <li>Hold <strong>Ctrl</strong> while selecting to add to the selection.</li>
+</ul>
+
+<h3 id="selecting-wires">Selecting wires</h3>
+
+<ul>
+  <li>Click a wire to select it.</li>
+  <li>Right-clicking a wire can also select it (context menu).</li>
+</ul>
+
+<h3 id="moving-components">Moving components</h3>
+
+<ul>
+  <li>Drag selected components to move them.</li>
+</ul>
+
+<h3 id="copy--paste">Copy / Paste</h3>
+
+<ul>
+  <li>Copy: <strong>Ctrl+C</strong> (copies selected components).
+    <ul>
+      <li>Wires are copied <strong>only if both endpoints</strong> are within the selected components.</li>
+    </ul>
+  </li>
+  <li>Paste: <strong>Ctrl+V</strong>
+    <ul>
+      <li>Each subsequent paste offsets by <code class="language-plaintext highlighter-rouge">(20, 20)</code> more than the previous paste.</li>
+      <li>If you paste from the wire/canvas context menu, paste can target the <strong>clicked location</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="delete">Delete</h3>
+
+<ul>
+  <li>Delete selected components/wires: <strong>Delete</strong> or <strong>Backspace</strong>.</li>
+  <li>Clear entire workspace: <strong>Ctrl+D</strong> or <strong>Edit → Clear Workspace</strong>.</li>
+</ul>
+
+<p>Undo/Redo:</p>
+
+<ul>
+  <li>Undo: <strong>Ctrl+Z</strong></li>
+  <li>Redo: <strong>Ctrl+Y</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="5-wiring">5. Wiring</h2>
+
+<h3 id="create-a-wire">Create a wire</h3>
+
+<ol>
+  <li>Click a <strong>pin</strong> on a component to start wiring.</li>
+  <li>Valid destination pins are highlighted.</li>
+  <li>Move the cursor near a valid pin to <strong>snap</strong> to it.</li>
+  <li>Click the destination pin to connect.</li>
+</ol>
+
+<p>Rules enforced by the editor:</p>
+
+<ul>
+  <li>You can only connect <strong>output → input</strong> (or <strong>input → output</strong>). Attempting to connect same-direction pins cancels wiring.</li>
+  <li>Attempting to create a duplicate wire between the same two pins cancels wiring.</li>
+</ul>
+
+<h3 id="add-manual-wire-segments-waypoints">Add manual wire segments (waypoints)</h3>
+
+<p>While you are drawing a wire:</p>
+
+<ul>
+  <li>Click on the <strong>canvas</strong> to add a manual segment point (waypoint).</li>
+  <li>Once you add manual segments, auto-routing will no longer override your segments for that wire.</li>
+</ul>
+
+<h3 id="cancel-wiring">Cancel wiring</h3>
+
+<ul>
+  <li>Press <strong>Esc</strong> (cancel/clear shortcut), or</li>
+  <li>Right-click (depending on the current interaction state).</li>
+</ul>
+
+<h3 id="auto-routing-wire-routing">Auto-routing (“Wire Routing”)</h3>
+
+<ul>
+  <li>Toggle: <strong>Tools → Wire Routing</strong>.</li>
+  <li>When enabled (and you have not added manual segments), the app generates a <strong>Manhattan-style route</strong> for the wire while you draw it.</li>
+</ul>
+
+<h3 id="optimize-wires">Optimize wires</h3>
+
+<ul>
+  <li>Optimize all wires: <strong>Ctrl+O</strong> or <strong>Tools → Optimize Wires</strong>.</li>
+  <li>Optimize selected wires: via the wire context menu.</li>
+</ul>
+
+<hr />
+
+<h2 id="6-simulation-controls">6. Simulation Controls</h2>
+
+<p>Simulation state shortcuts:</p>
+
+<ul>
+  <li>Start/Pause simulation: <strong>Space</strong></li>
+  <li>Stop simulation: <strong>Shift+Space</strong></li>
+</ul>
+
+<p>Notes:</p>
+
+<ul>
+  <li>Output propagation is handled by the simulation engine; signals update continuously while running.</li>
+  <li>If a custom script throws a runtime error, the simulator can enter an <strong>error</strong> state.</li>
+</ul>
+
+<hr />
+
+<h2 id="7-menus--commands">7. Menus &amp; Commands</h2>
+
+<h3 id="file-menu">File menu</h3>
+
+<ul>
+  <li><strong>New</strong>: Start a new workspace (<strong>Ctrl+N</strong>)</li>
+  <li><strong>Save</strong>: Save workspace to app storage (<strong>Ctrl+S</strong>)</li>
+  <li><strong>Load</strong>: Load workspace from app storage (<strong>Ctrl+L</strong>)</li>
+  <li><strong>Export</strong>: Export workspace to <code class="language-plaintext highlighter-rouge">.lgs</code> (<strong>Ctrl+E</strong>)</li>
+  <li><strong>Import</strong>: Import workspace from <code class="language-plaintext highlighter-rouge">.lgs</code> (<strong>Ctrl+I</strong>)</li>
+  <li><strong>Export as PNG</strong>: Render the current workspace as a PNG image</li>
+  <li><strong>Export as SVG</strong>: Render the current workspace as an SVG</li>
+</ul>
+
+<h3 id="edit-menu">Edit menu</h3>
+
+<ul>
+  <li>Copy (<strong>Ctrl+C</strong>)</li>
+  <li>Paste (<strong>Ctrl+V</strong>)</li>
+  <li>Select All (<strong>Ctrl+A</strong>)</li>
+  <li>Clear Workspace (<strong>Ctrl+D</strong>)</li>
+  <li>Delete selection (<strong>Delete/Backspace</strong>)</li>
+</ul>
+
+<h3 id="view-menu">View menu</h3>
+
+<ul>
+  <li>Reset viewport (<strong>R</strong>)</li>
+  <li>Toggle minimap (<strong>M</strong>)</li>
+  <li>Toggle components toolbar (<strong>C</strong>)</li>
+  <li>Toggle status bar (<strong>I</strong>)</li>
+  <li>Toggle keyboard shortcuts helper (<strong>K</strong>)</li>
+  <li>Toggle Light/Dark theme (<strong>Ctrl+T</strong>)</li>
+</ul>
+
+<h3 id="tools-menu">Tools menu</h3>
+
+<ul>
+  <li><strong>Wire Routing</strong> (toggle): enable/disable Manhattan routing while drawing wires</li>
+  <li><strong>Optimize Wires</strong> (<strong>Ctrl+O</strong>)</li>
+</ul>
+
+<h3 id="samples-menu">Samples menu</h3>
+
+<p>Loads bundled sample workspaces:</p>
+
+<ul>
+  <li>4-Bit ALU</li>
+  <li>7-Segment Display</li>
+  <li>8-Bit Counter</li>
+  <li>Custom 4x4 RAM</li>
+  <li>Keypad 4x4 Driver</li>
+  <li>LCD Hello World</li>
+</ul>
+
+<h3 id="help-menu">Help menu</h3>
+
+<ul>
+  <li>Script Syntax Guide (opens the in-app guide)</li>
+  <li>Support Development</li>
+  <li>Send Feedback</li>
+  <li>Version display</li>
+</ul>
+
+<hr />
+
+<h2 id="8-files-importexport">8. Files, Import/Export</h2>
+
+<h3 id="workspace-files-lgs">Workspace files (<code class="language-plaintext highlighter-rouge">.lgs</code>)</h3>
+
+<ul>
+  <li>Exported/imported workspace files use the <code class="language-plaintext highlighter-rouge">.lgs</code> extension.</li>
+</ul>
+
+<h3 id="memory-files-lgm">Memory files (<code class="language-plaintext highlighter-rouge">.lgm</code>)</h3>
+
+<ul>
+  <li>Memory components can export/import memory contents as <code class="language-plaintext highlighter-rouge">.lgm</code> from the memory editor dialog.</li>
+</ul>
+
+<h3 id="image-export">Image export</h3>
+
+<ul>
+  <li>PNG and SVG exports are available from the File menu.</li>
+</ul>
+
+<hr />
+
+<h2 id="9-component-catalog">9. Component Catalog</h2>
+
+<p>Components are available in the <strong>Components toolbar</strong> (left). Items labeled <strong>PRO</strong> are gated behind premium mode.</p>
+
+<h3 id="91-inputoutput--timing">9.1 Input/Output &amp; Timing</h3>
+
+<ul>
+  <li><strong>INPUT</strong>: click to toggle output <strong>Y</strong> HIGH/LOW.</li>
+  <li><strong>OUTPUT</strong>: visual indicator driven by input <strong>A</strong>.</li>
+  <li><strong>TRI-STATE BUFFER</strong>: inputs <strong>A</strong>, control <strong>EN</strong>, output <strong>Y</strong>.
+    <ul>
+      <li>Implemented behavior: <code class="language-plaintext highlighter-rouge">Y = A AND EN</code>.</li>
+      <li>Note: although the UI text refers to High-Z, the simulator represents signals as booleans; disabled effectively drives LOW.</li>
+    </ul>
+  </li>
+  <li><strong>CLOCK</strong>: configurable clock generator with <strong>EN</strong>; outputs a square wave.</li>
+  <li><strong>KEYPAD 4x4</strong>: 4×4 matrix keypad.
+    <ul>
+      <li>Inputs <strong>C0-C3</strong> (columns), outputs <strong>R0-R3</strong> (rows).</li>
+      <li>When a key is pressed and the corresponding column is HIGH, the matching row goes HIGH.</li>
+    </ul>
+  </li>
+  <li><strong>LABEL</strong>: text label; double-click to edit.</li>
+  <li><strong>INPUT TUNNEL / OUTPUT TUNNEL</strong>: signal “teleport” by Tunnel ID.
+    <ul>
+      <li>OutputTunnel outputs are the OR-combination of all InputTunnels with matching Tunnel ID (per pin index).</li>
+      <li>Configure Tunnel ID + pin count via context menu.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="92-basic-logic-gates">9.2 Basic Logic Gates</h3>
+
+<p>All basic gates output <strong>Y</strong> and use lettered inputs (A, B, …) depending on the gate.</p>
+
+<ul>
+  <li><strong>NOT</strong>: <code class="language-plaintext highlighter-rouge">Y = NOT A</code></li>
+  <li><strong>AND</strong>: `Y = A AND B (…)</li>
+  <li><strong>OR</strong>: <code class="language-plaintext highlighter-rouge">Y = A OR B (...)</code></li>
+  <li><strong>NAND</strong>: <code class="language-plaintext highlighter-rouge">Y = NOT(AND(...))</code></li>
+  <li><strong>NOR</strong>: <code class="language-plaintext highlighter-rouge">Y = NOT(OR(...))</code></li>
+  <li><strong>XOR</strong>: `Y = A XOR B (…)</li>
+  <li><strong>XNOR</strong>: <code class="language-plaintext highlighter-rouge">Y = NOT(XOR(...))</code></li>
+</ul>
+
+<h3 id="93-programmable">9.3 Programmable</h3>
+
+<ul>
+  <li><strong>CUSTOM COMPONENT</strong>: define combinational logic using the built-in scripting language.</li>
+  <li><strong>CUSTOM SEQUENTIAL COMPONENT</strong>: define clocked/stateful logic using scripting (<code class="language-plaintext highlighter-rouge">clock:</code> and <code class="language-plaintext highlighter-rouge">state:</code> support).</li>
+  <li><strong>TRUTH TABLE</strong>: define custom combinational logic via a table editor (1–8 inputs, 1–8 outputs).</li>
+</ul>
+
+<h3 id="94-flip-flops">9.4 Flip-Flops</h3>
+
+<p>Flip-flops share the same control pins:</p>
+
+<ul>
+  <li>Controls: <strong>CLK</strong> (rising-edge), <strong>RST</strong> (reset).</li>
+  <li>Outputs: <strong>Q</strong>, <strong>~Q</strong>.</li>
+</ul>
+
+<p>Available:</p>
+
+<ul>
+  <li><strong>D Flip-Flop</strong> (free)</li>
+  <li><strong>T Flip-Flop</strong> (PRO)</li>
+  <li><strong>SR Flip-Flop</strong> (PRO)</li>
+  <li><strong>JK Flip-Flop</strong> (PRO)</li>
+</ul>
+
+<h3 id="95-registers--memory">9.5 Registers &amp; Memory</h3>
+
+<ul>
+  <li><strong>REGISTER 4/8/16-bit</strong>:
+    <ul>
+      <li>Inputs: <strong>D0..D(n-1)</strong></li>
+      <li>Controls: <strong>CLK</strong>, <strong>LD</strong>, <strong>INC</strong>, <strong>CLR</strong></li>
+      <li>Outputs: <strong>Y0..Y(n-1)</strong></li>
+      <li>Behavior: on CLK rising edge, CLR has highest priority, then LD, then INC.</li>
+    </ul>
+  </li>
+  <li><strong>MEMORY 128x4 / 128x8</strong>:
+    <ul>
+      <li>Address inputs: <strong>A0..</strong></li>
+      <li>Data inputs: <strong>D0..</strong></li>
+      <li>Controls: <strong>WE</strong> (write enable), <strong>RE</strong> (read enable)</li>
+      <li>Outputs: <strong>Y0..</strong></li>
+      <li>Behavior:
+        <ul>
+          <li>If <strong>WE=1</strong>, writes D to selected address.</li>
+          <li>Else if <strong>RE=1</strong>, reads selected address to outputs.</li>
+          <li>Else outputs are LOW.</li>
+        </ul>
+      </li>
+      <li>Memory editor is available via context menu.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="96-counters">9.6 Counters</h3>
+
+<ul>
+  <li>Inputs: <strong>CLK</strong></li>
+  <li>Control: <strong>RST</strong></li>
+  <li>Outputs: <strong>Y0..Y(n-1)</strong></li>
+  <li>Behavior: increments on CLK rising edge; wraps around; RST resets to 0.</li>
+</ul>
+
+<p>Available:</p>
+
+<ul>
+  <li>2-bit (PRO)</li>
+  <li>4-bit (free)</li>
+  <li>8-bit (PRO)</li>
+</ul>
+
+<h3 id="97-multiplexers--demultiplexers">9.7 Multiplexers &amp; Demultiplexers</h3>
+
+<ul>
+  <li><strong>MUX N×1</strong> (2×1 free, 4×1/8×1 PRO):
+    <ul>
+      <li>Select lines: <strong>S…</strong> choose which input is routed to outputs.</li>
+    </ul>
+  </li>
+  <li><strong>DEMUX 1×N</strong> (1×2 free, 1×4/1×8 PRO):
+    <ul>
+      <li>Select lines: <strong>S…</strong> choose which output receives the input.</li>
+      <li>Unselected outputs remain LOW.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="98-bus-systems-pro">9.8 Bus Systems (PRO)</h3>
+
+<p>Bus components are <strong>multi-bit multiplexers</strong> used to route grouped data.</p>
+
+<ul>
+  <li>Inputs are grouped per source (A0.., B0.., etc depending on size)</li>
+  <li>Select lines choose which group routes to the output group.</li>
+</ul>
+
+<h3 id="99-encoders--decoders">9.9 Encoders &amp; Decoders</h3>
+
+<ul>
+  <li><strong>Decoder (with EN)</strong>: binary input → one-hot output.</li>
+  <li><strong>Encoder (with EN)</strong>: one-hot input → binary output.
+    <ul>
+      <li>Implemented as a priority encoder (highest active input wins).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="910-data-converters">9.10 Data Converters</h3>
+
+<ul>
+  <li><strong>PISO (Parallel-In Serial-Out)</strong> (4-bit free, 8-bit PRO):
+    <ul>
+      <li>Inputs: <strong>D0..Dn</strong>, Controls: <strong>CLK</strong>, <strong>LD</strong>, <strong>CLR</strong>, Output: <strong>Y</strong></li>
+      <li>If LD=1 at CLK rising edge: loads inputs; else shifts.</li>
+    </ul>
+  </li>
+  <li><strong>SIPO (Serial-In Parallel-Out)</strong> (4-bit free, 8-bit PRO):
+    <ul>
+      <li>Input: <strong>D</strong>, Controls: <strong>CLK</strong>, <strong>CLR</strong>, Outputs: <strong>Y…</strong></li>
+      <li>Shifts in on CLK rising edge.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="911-arithmetic-units-pro">9.11 Arithmetic Units (PRO)</h3>
+
+<ul>
+  <li><strong>Adders (1/2/4/8-bit)</strong>:
+    <ul>
+      <li>Inputs: <strong>A…</strong>, <strong>B…</strong>, Control: <strong>Cin</strong></li>
+      <li>Outputs: <strong>S…</strong>, <strong>Cout</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="912-comparators-pro">9.12 Comparators (PRO)</h3>
+
+<ul>
+  <li><strong>Comparators (1/2/4/8-bit)</strong>:
+    <ul>
+      <li>Inputs: <strong>A…</strong>, <strong>B…</strong></li>
+      <li>Outputs: <strong>LT</strong>, <strong>EQ</strong>, <strong>GT</strong> (exactly one is HIGH)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="913-displays">9.13 Displays</h3>
+
+<ul>
+  <li><strong>7-Segment Display</strong>:
+    <ul>
+      <li>Inputs: <strong>A..G</strong>, <strong>DP</strong>, Control: <strong>EN</strong></li>
+      <li>Each input directly drives the corresponding segment.</li>
+    </ul>
+  </li>
+  <li><strong>7-Segment Decoder</strong>:
+    <ul>
+      <li>Inputs: <strong>D0..D3</strong> (4-bit)</li>
+      <li>Outputs: <strong>A..G</strong></li>
+      <li>Converts 0–15 to seven-segment patterns (0–9 numeric, 10–15 A–F).</li>
+    </ul>
+  </li>
+  <li><strong>Character LCD 1×16 / 2×16 / 4×16</strong>:
+    <ul>
+      <li>Control pins: <strong>D0–D7</strong>, <strong>RS</strong>, <strong>EN</strong></li>
+      <li>Writes on EN rising edge.</li>
+      <li>Commands supported: 0x01 Clear, 0x02 Home, 0x03 Cursor Right, 0x04 Cursor Left, 0x05 Show Cursor, 0x06 Hide Cursor.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="914-test--measurement">9.14 Test &amp; Measurement</h3>
+
+<ul>
+  <li><strong>Oscilloscope (1/2/4/8 channels)</strong>:
+    <ul>
+      <li>Each channel is a control input pin <strong>CH0..</strong></li>
+      <li>Displays waveform history (HIGH vs LOW) over time.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="10-programmable-components--scripting">10. Programmable Components &amp; Scripting</h2>
+
+<h3 id="script-editor">Script editor</h3>
+
+<p>Custom components and custom sequential components support editing scripts.</p>
+
+<ul>
+  <li>Use the component context menu → <strong>Edit Script</strong>.</li>
+  <li>The editor includes formatting and validation.</li>
+</ul>
+
+<h3 id="truth-table-editor">Truth table editor</h3>
+
+<ul>
+  <li>Use the component context menu → <strong>Edit Table</strong>.</li>
+  <li>Configure input/output pin count and fill the truth table.</li>
+</ul>
+
+<h3 id="full-language-reference">Full language reference</h3>
+
+<p>See the Script Syntax Guide:</p>
+
+<ul>
+  <li>In-app: <strong>Help → Script Syntax Guide</strong></li>
+  <li>In repo: <code class="language-plaintext highlighter-rouge">assets/documents/script_syntax_guide.md</code></li>
+</ul>
+
+<hr />
+
+<h2 id="11-troubleshooting">11. Troubleshooting</h2>
+
+<ul>
+  <li><strong>Can’t paste</strong>: paste is only enabled after you copy at least one component.</li>
+  <li><strong>Wire won’t connect</strong>: ensure you’re connecting output↔input (same-direction cancels).</li>
+  <li><strong>Routing looks odd</strong>: try <strong>Tools → Optimize Wires</strong>, or toggle <strong>Tools → Wire Routing</strong>.</li>
+  <li><strong>Custom component shows error</strong>: open <strong>Edit Script</strong> and fix parse/runtime errors; simulator may enter an error state after a runtime exception.</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
