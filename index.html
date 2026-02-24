@@ -474,11 +474,13 @@
       }, 30000);
 
       window.addEventListener('error', function (e) {
-        console.error('Application error:', e.error);
+        var errorMessage = e.error ? e.error.toString() : e.message;
+
+        console.error('Application error:', errorMessage);
 
         if (typeof gtag !== 'undefined') {
           gtag('event', 'exception', {
-            description: e.error.toString(),
+            description: errorMessage,
             fatal: false,
           });
         }
