@@ -32,7 +32,7 @@ This guide describes the **actual features implemented in the app** (menus, shor
 ### What you see on screen
 
 - **Top menu bar**: File/Edit/View/Tools/Samples/Help.
-- **Components toolbar** (left): searchable component palette (some items show **PRO**).
+- **Components toolbar** (left): searchable component palette.
 - **Canvas** (center): place components, draw wires, select/edit.
 - Optional:
   - **Minimap** (toggleable)
@@ -233,7 +233,7 @@ Loads bundled sample workspaces:
 
 ## 9. Component Catalog
 
-Components are available in the **Components toolbar** (left). Items labeled **PRO** are gated behind premium mode.
+Components are available in the **Components toolbar** (left).
 
 ### 9.1 Input/Output & Timing
 
@@ -246,7 +246,7 @@ Components are available in the **Components toolbar** (left). Items labeled **P
 - **KEYPAD 4x4**: 4×4 matrix keypad.
   - Inputs **C0-C3** (columns), outputs **R0-R3** (rows).
   - When a key is pressed and the corresponding column is HIGH, the matching row goes HIGH.
-- **LABEL**: text label; double-click to edit.
+- **LABEL**: text label; right-click to edit text; can be used for annotations or as a non-interactive output display.
 - **INPUT TUNNEL / OUTPUT TUNNEL**: signal “teleport” by Tunnel ID.
   - OutputTunnel outputs are the OR-combination of all InputTunnels with matching Tunnel ID (per pin index).
   - Configure Tunnel ID + pin count via context menu.
@@ -278,10 +278,10 @@ Flip-flops share the same control pins:
 
 Available:
 
-- **D Flip-Flop** (free)
-- **T Flip-Flop** (PRO)
-- **SR Flip-Flop** (PRO)
-- **JK Flip-Flop** (PRO)
+- **D Flip-Flop**
+- **T Flip-Flop**
+- **SR Flip-Flop**
+- **JK Flip-Flop**
 
 ### 9.5 Registers & Memory
 
@@ -311,20 +311,20 @@ Available:
 
 Available:
 
-- 2-bit (PRO)
-- 4-bit (free)
-- 8-bit (PRO)
+- 2-bit
+- 4-bit
+- 8-bit
 
 ### 9.7 Multiplexers & Demultiplexers
 
-- **MUX N×1** (2×1 free, 4×1/8×1 PRO):
+- **MUX N×1** (2×1 free, 4×1/8×1):
   - Select lines: **S...** choose which input is routed to outputs.
 
-- **DEMUX 1×N** (1×2 free, 1×4/1×8 PRO):
+- **DEMUX 1×N** (1×2 free, 1×4/1×8):
   - Select lines: **S...** choose which output receives the input.
   - Unselected outputs remain LOW.
 
-### 9.8 Bus Systems (PRO)
+### 9.8 Bus Systems
 
 Bus components are **multi-bit multiplexers** used to route grouped data.
 
@@ -339,21 +339,21 @@ Bus components are **multi-bit multiplexers** used to route grouped data.
 
 ### 9.10 Data Converters
 
-- **PISO (Parallel-In Serial-Out)** (4-bit free, 8-bit PRO):
+- **PISO (Parallel-In Serial-Out)** (4-bit free, 8-bit):
   - Inputs: **D0..Dn**, Controls: **CLK**, **LD**, **CLR**, Output: **Y**
   - If LD=1 at CLK rising edge: loads inputs; else shifts.
 
-- **SIPO (Serial-In Parallel-Out)** (4-bit free, 8-bit PRO):
+- **SIPO (Serial-In Parallel-Out)** (4-bit free, 8-bit):
   - Input: **D**, Controls: **CLK**, **CLR**, Outputs: **Y...**
   - Shifts in on CLK rising edge.
 
-### 9.11 Arithmetic Units (PRO)
+### 9.11 Arithmetic Units
 
 - **Adders (1/2/4/8-bit)**:
   - Inputs: **A...**, **B...**, Control: **Cin**
   - Outputs: **S...**, **Cout**
 
-### 9.12 Comparators (PRO)
+### 9.12 Comparators
 
 - **Comparators (1/2/4/8-bit)**:
   - Inputs: **A...**, **B...**
