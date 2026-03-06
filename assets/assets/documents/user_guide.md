@@ -130,6 +130,18 @@ While you are drawing a wire:
 - Click on the **canvas** to add a manual segment point (waypoint).
 - Once you add manual segments, auto-routing will no longer override your segments for that wire.
 
+After a wire is drawn and you have selected it:
+
+- Click on the **small dot** between two segments to add a node and drag it.
+
+### Remove wire segments (waypoints)
+
+You can remove intermediate node points to straighten a wire trace out.
+
+- Select the wire to reveal its nodes.
+- **double-click** on a visible square node on the wire to remove it.
+- **Note:** Wires are required to retain at least two node segments to maintain routing structure, so the final node cannot be deleted using this process.
+
 ### Cancel wiring
 
 - Press **Esc** (cancel/clear shortcut), or

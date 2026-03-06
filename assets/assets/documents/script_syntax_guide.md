@@ -27,9 +27,15 @@ The Logic Gate Simulator allows you to create custom components using a concise,
 - Control Flow
   - If-Else Statements
 - Complete Examples
-  - Example 1: Combinatorial Logic (ALU)
-  - Example 2: Sequential Logic (Counter)
-  - Example 3: Random Access Memory (RAM)
+  - Example 1: Basic Logic Gates (AND, OR, NOT)
+  - Example 2: XOR Gate (Exclusive OR)
+  - Example 3: Half Adder
+  - Example 4: 4-to-1 Multiplexer (MUX)
+  - Example 5: Combinatorial Logic (Simple ALU)
+  - Example 6: Sequential Logic (Counter)
+  - Example 7: Random Access Memory (RAM)
+  - Example 8: Random Number Generator
+  - Example 9: Basic ALU with Built-in Functions
 
 ---
 
@@ -484,7 +490,87 @@ for (var i = 0; i < 10; i = i + 1) {
 
 ---
 
-### Example 1: Combinatorial Logic (ALU)
+### Example 1: Basic Logic Gates (AND, OR, NOT)
+
+This script demonstrates how to create basic logic gates. These are foundational building blocks for digital circuits.
+
+```c
+# Header Declarations
+inputs: A, B
+outputs: OutAND, OutOR, OutNOT
+
+# Body Logic
+
+# AND gate: Output is 1 only if BOTH inputs are 1
+OutAND = A && B;
+
+# OR gate: Output is 1 if AT LEAST ONE input is 1
+OutOR = A || B;
+
+# NOT gate (Inverter): Output is the opposite of A
+OutNOT = !A;
+```
+
+### Example 2: XOR Gate (Exclusive OR)
+
+An XOR gate outputs 1 if exactly one of its inputs is 1. This example shows both the built-in bitwise operator and how it's constructed from basic logical operators.
+
+```c
+# Header Declarations
+inputs: A, B
+outputs: OutXOR
+
+# Body Logic
+
+# Using the built-in bitwise XOR operator (most efficient)
+OutXOR = A ^ B;
+
+# Alternatively, using basic logical construction:
+# OutXOR = (A && !B) || (!A && B);
+```
+
+### Example 3: Half Adder
+
+A Half Adder adds two single-bit binary numbers. It produces a sum and a carry.
+
+```c
+# Header Declarations
+inputs: A, B
+outputs: Sum, Carry
+
+# Body Logic
+
+# The sum is essentially an XOR operation
+Sum = A ^ B;
+
+# The carry happens when both A and B are 1 (AND operation)
+Carry = A && B;
+```
+
+### Example 4: 4-to-1 Multiplexer (MUX)
+
+A multiplexer selects one of several input signals and forwards the selected input into a single line.
+
+```c
+# Header Declarations
+inputs: Select[2], In0, In1, In2, In3
+outputs: OutMUX
+
+# Body Logic
+
+# Use the 2-bit Select bus to choose the output
+if (Select == 0) {
+  OutMUX = In0;
+} else if (Select == 1) {
+  OutMUX = In1;
+} else if (Select == 2) {
+  OutMUX = In2;
+} else {
+  OutMUX = In3;
+}
+```
+
+### Example 5: Combinatorial Logic (Simple ALU)
 
 This script creates a simple Arithmetic Logic Unit. It has no clock, so outputs update immediately when inputs change.
 
@@ -516,10 +602,10 @@ if (OpCode == 0) {
 Result = val;
 
 # Set Zero flag using ternary operator
-IsZero = (Result == 0) ? 1: 0;
+IsZero = (Result == 0) ? 1 : 0;
 ```
 
-### Example 2: Sequential Logic (Counter)
+### Example 6: Sequential Logic (Counter)
 
 This creates an 8-bit counter that increments on every clock cycle. It requires `clock` and `state`.
 
@@ -546,7 +632,7 @@ if (Reset) {
 Count = internal_count;
 ```
 
-### Example 3: Random Access Memory (RAM)
+### Example 7: Random Access Memory (RAM)
 
 A 4x4 RAM module that demonstrates array indexing for memory storage.
 
@@ -575,7 +661,7 @@ if (ReadEnable) {
 }
 ```
 
-### Example 4: Random Number Generator
+### Example 8: Random Number Generator
 
 A simple component that generates random values for testing or probabilistic circuits.
 
@@ -602,7 +688,7 @@ if (Enable) {
 }
 ```
 
-### Example 5: Arithmetic Logic Unit (ALU) with Built-in Functions
+### Example 9: Basic ALU with Built-in Functions
 
 Demonstrates usage of `abs`, `min`, `max`, and `popcount` functions.
 
@@ -635,7 +721,7 @@ if (Operation == 0) {
 # Calculate flags
 ones_count = popcount(output);
 parity = ones_count & 1; # Odd parity bit
-overflow = (output > 255) ? 1: 0;
+overflow = (output > 255) ? 1 : 0;
 
 # Outputs
 Result = output;
