@@ -9,9 +9,10 @@
     <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin" />
     <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp" />
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics-compat.js"></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
 
     <!-- Primary Meta Tags -->
     <title>Logic Gate Simulator - Free Online Digital Circuit Simulator</title>
@@ -82,6 +83,13 @@
     <!-- Performance -->
     <link rel="dns-prefetch" href="https://www.gstatic.com" />
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="share_tech_mono.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -453,10 +461,25 @@
       window.addEventListener('flutter-first-frame', function () {
         document.body.classList.add('flutter-ready');
 
+        const gtagScript = document.createElement('script');
+        gtagScript.src =
+          'https://www.googletagmanager.com/gtag/js?id=G-5P40R1Q7CD';
+        gtagScript.async = true;
+        document.head.appendChild(gtagScript);
+
         setTimeout(() => {
           const loading = document.getElementById('loading');
           if (loading) loading.style.display = 'none';
         }, 600);
+
+        const viewportMeta = document.querySelector('meta[name="viewport"]');
+
+        if (viewportMeta) {
+          viewportMeta.setAttribute(
+            'content',
+            'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes',
+          );
+        }
 
         if (typeof gtag !== 'undefined') {
           gtag('event', 'page_view', {
