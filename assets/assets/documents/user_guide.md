@@ -177,11 +177,11 @@ Notes:
 
 ### File menu
 
-- **New**: Start a new workspace (**Ctrl+N**)
-- **Save**: Save workspace to app storage (**Ctrl+S**)
-- **Load**: Load workspace from app storage (**Ctrl+L**)
-- **Export**: Export workspace to `.lgs` (**Ctrl+E**)
-- **Import**: Import workspace from `.lgs` (**Ctrl+I**)
+- **New Workspace**: Start a new workspace (**Ctrl+N**)
+- **Save Workspace**: Save workspace to app storage (**Ctrl+S**)
+- **Restore Workspace**: Restore workspace from app storage (**Ctrl+L**)
+- **Export Workspace**: Export workspace to `.lgs` (**Ctrl+E**)
+- **Import Workspace**: Import workspace from `.lgs` (**Ctrl+I**)
 - **Export as PNG**: Render the current workspace as a PNG image
 - **Export as SVG**: Render the current workspace as an SVG
 
