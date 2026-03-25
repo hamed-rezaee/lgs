@@ -1,20 +1,20 @@
 # Logic Gate Simulator — User Guide
 
-This guide describes the **actual features implemented in the app** (menus, shortcuts, editor behavior, file formats, and built-in components).
+This guide details the features, controls, and components available in the Logic Gate Simulator.
 
 ## Contents
 
-- [1. Getting Started](#1-getting-started)
-- [2. Workspace Basics](#2-workspace-basics)
-- [3. Navigation & View](#3-navigation--view)
-- [4. Selecting, Moving, Copy/Paste, Delete](#4-selecting-moving-copypaste-delete)
-- [5. Wiring](#5-wiring)
-- [6. Simulation Controls](#6-simulation-controls)
-- [7. Menus & Commands](#7-menus--commands)
-- [8. Files, Import/Export](#8-files-importexport)
-- [9. Component Catalog](#9-component-catalog)
-- [10. Programmable Components & Scripting](#10-programmable-components--scripting)
-- [11. Troubleshooting](#11-troubleshooting)
+- Getting Started
+- Workspace Basics
+- Navigation & View
+- Selecting, Moving, Copy/Paste, Delete
+- Wiring
+- Simulation Controls
+- Menus & Commands
+- Files, Import/Export
+- Component Catalog
+- Programmable Components & Scripting
+- Troubleshooting
 
 ---
 
@@ -215,6 +215,8 @@ Loads bundled sample workspaces:
 - 7-Segment Display
 - 8-Bit Counter
 - Custom 4x4 RAM
+- Invader Matrix Display
+- Keyboard Driver
 - Keypad 4x4 Driver
 - LCD Hello World
 
@@ -255,6 +257,7 @@ Components are available in the **Components toolbar** (left).
   - Implemented behavior: `Y = A AND EN`.
   - Note: although the UI text refers to High-Z, the simulator represents signals as booleans; disabled effectively drives LOW.
 - **CLOCK**: configurable clock generator with **EN**; outputs a square wave.
+- **KEYBOARD INPUT**: captures physical keyboard input when **EN** is HIGH. Outputs an 8-bit ASCII code on **D0..D7** and sends a short pulse on the **STR** (Strobe) pin on key press.
 - **KEYPAD 4x4**: 4×4 matrix keypad.
   - Inputs **C0-C3** (columns), outputs **R0-R3** (rows).
   - When a key is pressed and the corresponding column is HIGH, the matching row goes HIGH.
@@ -268,11 +271,11 @@ Components are available in the **Components toolbar** (left).
 All basic gates output **Y** and use lettered inputs (A, B, …) depending on the gate.
 
 - **NOT**: `Y = NOT A`
-- **AND**: `Y = A AND B (...)
+- **AND**: `Y = A AND B (...)`
 - **OR**: `Y = A OR B (...)`
 - **NAND**: `Y = NOT(AND(...))`
 - **NOR**: `Y = NOT(OR(...))`
-- **XOR**: `Y = A XOR B (...)
+- **XOR**: `Y = A XOR B (...)`
 - **XNOR**: `Y = NOT(XOR(...))`
 
 ### 9.3 Programmable
@@ -382,6 +385,11 @@ Bus components are **multi-bit multiplexers** used to route grouped data.
   - Outputs: **A..G**
   - Converts 0–15 to seven-segment patterns (0–9 numeric, 10–15 A–F).
 
+- **MATRIX DISPLAY 32x32 / 64x64**:
+  - Inputs: **X...**, **Y...**, **C** (Color/State)
+  - Controls: **CLK**, **CLR**
+  - Behavior: Writes the pixel (C) at coordinate (X, Y) on CLK rising edge. CLR clears the display.
+
 - **Character LCD 1×16 / 2×16 / 4×16**:
   - Control pins: **D0–D7**, **RS**, **EN**
   - Writes on EN rising edge.
@@ -392,6 +400,10 @@ Bus components are **multi-bit multiplexers** used to route grouped data.
 - **Oscilloscope (1/2/4/8 channels)**:
   - Each channel is a control input pin **CH0..**
   - Displays waveform history (HIGH vs LOW) over time.
+
+### 9.15 Subcircuits
+
+- **Subcircuit Component**: Select multiple components and wires, right-click, and choose **Create Subcircuit** to package them into a single reusable component. The inputs and outputs of the selected inner components become the pins of the subcircuit. You can rename its pins via the context menu.
 
 ---
 
@@ -411,10 +423,7 @@ Custom components and custom sequential components support editing scripts.
 
 ### Full language reference
 
-See the Script Syntax Guide:
-
-- In-app: **Help → Script Syntax Guide**
-- In repo: `assets/documents/script_syntax_guide.md`
+See the Script Syntax Guide in the Help menu for a complete reference of the scripting language used for programmable components.
 
 ---
 

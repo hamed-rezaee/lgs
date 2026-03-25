@@ -1,10 +1,8 @@
-# Custom Component Scripting Guide
+# Logic Gate Simulator — Scripting Guide
 
-The Logic Gate Simulator allows you to create custom components using a concise, C-like scripting language. This guide provides a complete reference to the language syntax, structure, and features, enabling you to build complex custom logic gates and chips.
+The Logic Gate Simulator supports custom components via a custom C-like scripting language. This guide details the language syntax, available operators, and built-in functions for developing complex logic circuits.
 
----
-
-## Table of Contents
+## Contents
 
 - Script Structure
 - Component Definitions
@@ -39,9 +37,7 @@ The Logic Gate Simulator allows you to create custom components using a concise,
 
 ---
 
-## Script Structure
-
----
+## 1. Script Structure
 
 Every script consists of two distinct sections:
 
@@ -50,9 +46,7 @@ Every script consists of two distinct sections:
 
 ---
 
-## Component Definitions
-
----
+## 2. Component Definitions
 
 The header section uses specific keywords to define your component's pins and properties. Each declaration must be on its own line and appear **before any logic code**. Each section can be defined only **once**.
 
@@ -107,9 +101,7 @@ Defines internal memory that persists between clock cycles. This is only valid i
 
 ---
 
-## Syntax and Language Features
-
----
+## 3. Syntax and Language Features
 
 ### Semicolons
 
@@ -158,9 +150,7 @@ The following words are reserved and cannot be used as variable names:
 
 ---
 
-## Operators
-
----
+## 4. Operators
 
 The language supports a wide range of operators. They are listed below by category.
 
@@ -251,9 +241,7 @@ max = (A > B) ? A : B;
 
 ---
 
-## Built-in Functions
-
----
+## 5. Built-in Functions
 
 The language provides built-in functions that can be called in expressions.
 
@@ -346,26 +334,9 @@ weight = popcount(value);
 
 > **Note**: `popcount()` is particularly useful for parity generation, error detection, and population count operations in digital circuits.
 
-_Examples_:
-
-```c
-# Generate a random bit (0 or 1)
-coin_flip = random();
-
-# Generate a random number from 0 to 15
-dice = random(16);
-
-# Generate random 4-bit value
-random_data[4] = random(16);
-```
-
-> **Note**: Each call to `random()` produces a new pseudo-random value. The random number generator is automatically seeded.
-
 ---
 
-## Control Flow
-
----
+## 6. Control Flow
 
 ### If-Else Statements
 
@@ -486,9 +457,7 @@ for (var i = 0; i < 10; i = i + 1) {
 
 ---
 
-## Complete Examples
-
----
+## 7. Complete Examples
 
 ### Example 1: Basic Logic Gates (AND, OR, NOT)
 
