@@ -31,7 +31,7 @@ This guide details the features, controls, and components available in the Logic
 
 ### What you see on screen
 
-- **Top menu bar**: File/Edit/View/Tools/Samples/Help.
+- **Top menu bar**: File/Edit/Tools/Collaboration/Help (+ Settings and Theme toggle buttons).
 - **Components toolbar** (left): searchable component palette.
 - **Canvas** (center): place components, draw wires, select/edit.
 - Optional:
@@ -58,17 +58,17 @@ This guide details the features, controls, and components available in the Logic
 
 ### Reset viewport
 
-- Use **View → Reset Viewport** or press **R**.
+- Use **Edit → Reset Viewport** or press **Ctrl+R**.
 
 ### View toggles
 
-Use **View** menu or the shortcuts:
+Keyboard shortcuts (no dedicated menu — use these directly):
 
-- Toggle **Minimap**: **M**
-- Toggle **Components toolbar**: **C**
-- Toggle **Status bar**: **I**
-- Toggle **Keyboard shortcuts helper**: **K**
-- Toggle **Theme** (Light/Dark): **Ctrl+T**
+- Toggle **Minimap**: **Alt+M**
+- Toggle **Components toolbar**: **Alt+T**
+- Toggle **Status bar**: **Alt+Q**
+- Toggle **Keyboard shortcuts helper**: **Alt+K**
+- Toggle **Theme** (Light/Dark): **Alt+Shift+T**
 
 ---
 
@@ -163,7 +163,7 @@ You can remove intermediate node points to straighten a wire trace out.
 
 Simulation state shortcuts:
 
-- Start/Pause simulation: **Space**
+- Start/Pause simulation: **Ctrl+Space**
 - Stop simulation: **Shift+Space**
 
 Notes:
@@ -182,8 +182,8 @@ Notes:
 - **Restore Workspace**: Restore workspace from app storage (**Ctrl+L**)
 - **Export Workspace**: Export workspace to `.lgs` (**Ctrl+E**)
 - **Import Workspace**: Import workspace from `.lgs` (**Ctrl+I**)
-- **Export as PNG**: Render the current workspace as a PNG image
-- **Export as SVG**: Render the current workspace as an SVG
+- **Export Blueprint as PNG**: Render the current workspace as a PNG image
+- **Export Blueprint as SVG**: Render the current workspace as an SVG
 
 ### Edit menu
 
@@ -192,24 +192,29 @@ Notes:
 - Select All (**Ctrl+A**)
 - Clear Workspace (**Ctrl+D**)
 - Delete selection (**Delete/Backspace**)
+- Reset Viewport (**Ctrl+R**)
 
-### View menu
-
-- Reset viewport (**R**)
-- Toggle minimap (**M**)
-- Toggle components toolbar (**C**)
-- Toggle status bar (**I**)
-- Toggle keyboard shortcuts helper (**K**)
-- Toggle Light/Dark theme (**Ctrl+T**)
+Note: Undo (**Ctrl+Z**) and Redo (**Ctrl+Y**) are available as dedicated buttons in the app bar.
 
 ### Tools menu
 
-- **Wire Routing** (toggle): enable/disable Manhattan routing while drawing wires
-- **Optimize Wires** (**Ctrl+O**)
+- **Optimize Wires** (**Ctrl+Shift+O**): collapse redundant wire segments
+- **Auto Route Wires** (**Ctrl+Shift+R**): apply Manhattan routing to all wires
 
-### Samples menu
+### Collaboration menu
 
-Loads bundled sample workspaces:
+- **Collaboration Dialog** (**Alt+Shift+C**): open the real-time collaboration panel to host or join a session
+
+### Help menu
+
+- **User Guide** (opens this guide)
+- **Script Syntax Guide** (opens the scripting reference)
+- **Sample Projects** (loads bundled sample workspaces — see list below)
+- Support Development
+- Send Feedback
+- Version display
+
+#### Sample workspaces (via Help → Sample Projects)
 
 - 4-Bit ALU
 - 7-Segment Display
@@ -219,13 +224,6 @@ Loads bundled sample workspaces:
 - Keyboard Driver
 - Keypad 4x4 Driver
 - LCD Hello World
-
-### Help menu
-
-- Script Syntax Guide (opens the in-app guide)
-- Support Development
-- Send Feedback
-- Version display
 
 ---
 
