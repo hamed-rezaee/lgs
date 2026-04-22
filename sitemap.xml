@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lgsim.io/</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -11,5 +11,11 @@
       <image:title>Logic Gate Simulator</image:title>
       <image:caption>Free online digital circuit builder and logic gate simulator</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://lgsim.io/privacy.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
