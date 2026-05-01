@@ -1,8 +1,8 @@
 {
-  "name": "Logic Gate Simulator - Digital Circuit Builder & Designer Tool",
-  "short_name": "Logic Gate Simulator",
-  "description": "Free online logic gate simulator for building and testing digital circuits. Interactive educational tool for learning digital electronics with logic gates, flip-flops, counters, and memory components. Perfect for students, educators, and engineers.",
-  "start_url": "/?utm_source=pwa&utm_medium=standalone",
+  "name": "Gate Lab - Digital Circuit Builder & Designer Tool",
+  "short_name": "Gate Lab",
+  "description": "Free online digital circuit simulator for building and testing digital circuits. Interactive educational tool for learning digital electronics with logic gates, flip-flops, counters, and memory components. Perfect for students, educators, and engineers.",
+  "start_url": "/app.html?utm_source=pwa&utm_medium=standalone",
   "scope": "/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
@@ -27,7 +27,7 @@
       "sizes": "512x512",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Logic Gate Simulator interface with digital circuit design"
+      "label": "Gate Lab interface with digital circuit design"
     }
   ],
   "icons": [

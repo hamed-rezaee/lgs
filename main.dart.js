@@ -114262,8 +114262,11 @@ q=r.xt(r.a.d.lV(B.cZ),B.jC,new A.aLF(r),q,"Optimize Wires")
 s=B.dV.gcq()
 return r.xq("Tools",A.b([q,r.xt(r.a.d.lV(B.dV),B.nl,new A.aLG(r),s,"Auto Route Wires"),B.db,r.aju(B.S_,!0,$.pY().a,A.bDv(),"Propagation Delay")],t.Do))},
 aj2(){return this.xq("Collaboration",A.b([this.ajv(B.tE,new A.aLj(this),!0,B.lE.gcq(),"Collaboration Session")],t.Do))},
-aji(){var s=this,r=null,q=s.xs(B.RM,new A.aLv(s),"User Guide"),p=s.xs(B.Rs,new A.aLw(s),"Script Syntax Guide"),o=s.xs(B.RH,new A.aLx(s),"Sample Projects"),n=s.xs(B.Rx,new A.aLy(s),"Support Development"),m=s.xs(B.RI,new A.aLz(s),"Send Feedback")
-return s.xq("Help",A.b([q,p,o,B.db,n,m,B.db,A.axO(A.c3(A.b([A.dq(B.tD,($.C().a===B.e?B.k:B.l).av(0.7),r,16),B.oH,new A.bY(s.f,new A.aLA(),r,r,t.x_)],t.p),B.x,B.r,B.C,0,r),!1,r,r,t.N)],t.Do))},
+aji(){var s=this,r=null,q=A.b([s.xs(B.RM,new A.aLv(s),"User Guide"),s.xs(B.Rs,new A.aLw(s),"Script Syntax Guide"),s.xs(B.RH,new A.aLx(s),"Sample Projects"),B.db,s.xs(B.Rx,new A.aLy(s),"Support Development")],t.Do)
+q.push(s.xs(B.RI,new A.aLz(s),"Send Feedback"))
+q.push(B.db)
+q.push(A.axO(A.c3(A.b([A.dq(B.tD,($.C().a===B.e?B.k:B.l).av(0.7),r,16),B.oH,new A.bY(s.f,new A.aLA(),r,r,t.x_)],t.p),B.x,B.r,B.C,0,r),!1,r,r,t.N))
+return s.xq("Help",q)},
 aj1(){var s,r,q,p,o,n,m=null,l=this.a.d.d
 if(l.y){s=l.z?"HOST":"GUEST"
 r=$.C().a===B.e?B.bM:B.bW

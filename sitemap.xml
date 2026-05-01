@@ -3,14 +3,20 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lgsim.io/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://lgsim.io/icons/Icon-512.png</image:loc>
-      <image:title>Logic Gate Simulator</image:title>
-      <image:caption>Free online digital circuit builder and logic gate simulator</image:caption>
+      <image:title>Gate Lab</image:title>
+      <image:caption>Free online digital circuit builder and simulator</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://lgsim.io/app.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://lgsim.io/privacy.html</loc>

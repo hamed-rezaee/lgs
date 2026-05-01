@@ -1,6 +1,6 @@
-# Logic Gate Simulator — Scripting Guide
+# Gate Lab — Scripting Guide
 
-The Logic Gate Simulator supports custom components via a custom C-like scripting language. This guide details the language syntax, available operators, and built-in functions for developing complex logic circuits.
+Gate Lab supports custom components via a custom C-like scripting language. This guide details the language syntax, available operators, and built-in functions for developing complex logic circuits.
 
 ## Contents
 

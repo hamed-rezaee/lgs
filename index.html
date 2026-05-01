@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="en" oncontextmenu="event.preventDefault()">
+<html lang="en">
   <head>
-    <base href="/" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>Logic Gate Simulator - Free Online Digital Circuit Simulator</title>
+    <title>Gate Lab — Free Online Digital Circuit Simulator</title>
     <meta
       name="description"
-      content="Free collaborative logic gate simulator for building, testing, and sharing digital circuits in real-time. Features custom scriptable components, logic gates, flip-flops, counters, memory, and more. Perfect for students, engineers, and educators learning computer architecture."
+      content="Free collaborative digital circuit simulator for building, testing, and sharing digital circuits in real-time. Features custom scriptable components, logic gates, flip-flops, counters, memory, and more. Perfect for students, engineers, and educators."
     />
     <meta
       name="keywords"
-      content="logic gate simulator, digital circuit simulator, free logic simulator, online circuit simulator, collaborative circuit design, digital electronics, Boolean logic, truth table simulator, custom scriptable components, CPU design, computer architecture, STEM electronics tool, Logisim alternative, 7-segment display, ALU simulator, flip-flops, multiplexers, RAM ROM memory, open source logic simulator, flutter circuit simulator, web-based circuit simulation, learn digital electronics"
+      content="gate lab, digital circuit simulator, free logic simulator, online circuit simulator, collaborative circuit design, digital electronics, Boolean logic, truth table simulator, custom scriptable components, CPU design, computer architecture, STEM electronics tool, Logisim alternative, 7-segment display, ALU simulator, flip-flops, multiplexers, RAM ROM memory, open source logic simulator, flutter circuit simulator, web-based circuit simulation, learn digital electronics"
     />
-    <meta name="author" content="Logic Gate Simulator" />
+    <meta name="author" content="Gate Lab" />
     <meta
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
@@ -27,7 +27,7 @@
     <meta property="og:url" content="https://lgsim.io/" />
     <meta
       property="og:title"
-      content="Logic Gate Simulator - Free Online Digital Circuit Simulator"
+      content="Gate Lab — Free Online Digital Circuit Simulator"
     />
     <meta
       property="og:description"
@@ -36,7 +36,7 @@
     <meta property="og:image" content="https://lgsim.io/icons/Icon-512.png" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
-    <meta property="og:site_name" content="Logic Gate Simulator" />
+    <meta property="og:site_name" content="Gate Lab" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
@@ -44,7 +44,7 @@
     <meta name="twitter:url" content="https://lgsim.io/" />
     <meta
       name="twitter:title"
-      content="Logic Gate Simulator - Free Online Digital Circuit Simulator"
+      content="Gate Lab — Free Online Digital Circuit Simulator"
     />
     <meta
       name="twitter:description"
@@ -55,10 +55,8 @@
     <!-- PWA / Mobile -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Logic Gate Simulator" />
-    <meta name="application-name" content="Logic Gate Simulator" />
-    <meta name="msapplication-TileColor" content="#7A8478" />
+    <meta name="apple-mobile-web-app-title" content="Gate Lab" />
+    <meta name="application-name" content="Gate Lab" />
     <meta name="theme-color" content="#7A8478" />
 
     <!-- Icons -->
@@ -78,7 +76,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Performance -->
+    <!-- Performance hints -->
     <link rel="dns-prefetch" href="https://www.gstatic.com" />
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
     <link
@@ -89,45 +87,31 @@
       crossorigin="anonymous"
     />
 
-    <!-- Structured Data -->
+    <!-- Structured Data: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Logic Gate Simulator",
-        "alternateName": "LGSim",
+        "name": "Gate Lab",
+        "alternateName": "GLab — Free Online Digital Circuit Simulator",
         "url": "https://lgsim.io/",
-        "description": "Free collaborative logic gate simulator for building, testing, and sharing digital circuits. Features real-time multiplayer editing, custom scriptable components, oscilloscopes, and a comprehensive library of digital logic parts.",
+        "description": "Free collaborative digital circuit simulator for building, testing, and sharing digital circuits. Features real-time multiplayer editing, custom scriptable components, oscilloscopes, and a comprehensive library of digital logic parts.",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "Web Browser",
         "browserRequirements": "Requires JavaScript. Modern web browser with HTML5 support.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "featureList": [
           "Real-time multi-user collaboration",
           "Interactive drag-and-drop circuit simulator",
-          "Real-time digital logic simulation",
           "Logic gates: AND, OR, NOT, XOR, NAND, NOR, XNOR",
           "Flip-flops: D, T, JK, SR latches",
           "Counters and shift registers",
           "Multiplexers and demultiplexers",
-          "Encoders and decoders",
-          "Arithmetic: Adders and comparators",
           "Memory components: RAM and ROM",
-          "Registers and tri-state buffers",
-          "Bus systems for multi-bit signals",
           "Digital oscilloscope for waveform analysis",
           "7-segment displays and character LCD",
           "Custom components with scripting",
-          "Clock generators with adjustable frequency",
-          "Circuit save, load, and export functionality",
-          "Undo/redo with full command history",
-          "Zoom and pan infinite canvas",
-          "Component labeling and documentation",
-          "No installation required - runs in browser"
+          "No installation required — runs in browser"
         ],
         "screenshot": "https://lgsim.io/icons/Icon-512.png",
         "aggregateRating": {
@@ -137,12 +121,13 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "Logic Gate Simulator Team",
+          "name": "Gate Lab Team",
           "url": "https://lgsim.io/"
         }
       }
     </script>
 
+    <!-- Structured Data: FAQPage -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -150,18 +135,18 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What is a logic gate simulator?",
+            "name": "What is Gate Lab?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A logic gate simulator is an interactive tool for building and testing digital circuits using virtual logic gates like AND, OR, NOT, and XOR. It helps students and engineers understand digital electronics through real-time simulation."
+              "text": "Gate Lab is an interactive tool for building and testing digital circuits using virtual logic gates like AND, OR, NOT, and XOR. It helps students and engineers understand digital electronics through real-time simulation."
             }
           },
           {
             "@type": "Question",
-            "name": "Is this logic gate simulator free?",
+            "name": "Is Gate Lab free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, the Logic Gate Simulator is completely free to use. No registration or payment required. You can build, test, and save circuits directly in your browser."
+              "text": "Yes, Gate Lab is completely free to use. No registration or payment required. You can build, test, and save circuits directly in your browser."
             }
           },
           {
@@ -169,7 +154,7 @@
             "name": "What components are available?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The simulator includes: all basic logic gates (AND, OR, NOT, XOR, NAND, NOR, XNOR), flip-flops (D, T, JK, SR), counters, shift registers, multiplexers, demultiplexers, encoders, decoders, adders, comparators, memory (RAM/ROM), registers, tri-state buffers, bus systems, oscilloscope, 7-segment displays, character LCD, clock generators, and custom programmable components."
+              "text": "The simulator includes all basic logic gates (AND, OR, NOT, XOR, NAND, NOR, XNOR), flip-flops (D, T, JK, SR), counters, shift registers, multiplexers, demultiplexers, encoders, decoders, adders, comparators, memory (RAM/ROM), registers, tri-state buffers, bus systems, oscilloscope, 7-segment displays, character LCD, clock generators, and custom programmable components."
             }
           },
           {
@@ -193,6 +178,31 @@
     </script>
 
     <style>
+      /* ─── Tokens ───────────────────────────────────────────── */
+      :root {
+        --bg: #181c1f;
+        --bg-card: #272e33;
+        --surface: #3d484d;
+        --border: #3d484d;
+        --text: #d3c6aa;
+        --muted: #7a8478;
+        --green: #83c092;
+        --cyan: #7fbbb3;
+        --danger: #e67e80;
+        --radius: 0px;
+        --font: 'Share Tech Mono', 'Courier New', monospace;
+        --transition: 0.2s ease;
+      }
+
+      /* ─── Reset ────────────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       @font-face {
         font-family: 'Share Tech Mono';
         src: url('share_tech_mono.ttf') format('truetype');
@@ -201,186 +211,335 @@
         font-display: swap;
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
-        margin: 0;
-        padding: 0;
-        background: #181c1f;
-        overflow: hidden;
-        font-family:
-          'Share Tech Mono',
-          monospace,
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          'Roboto',
-          'Oxygen',
-          'Ubuntu',
-          'Cantarell',
-          'Fira Sans',
-          'Droid Sans',
-          'Helvetica Neue',
-          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font);
+        font-size: 16px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
       }
 
-      .loading-container {
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ─── Utilities ────────────────────────────────────────── */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section {
+        padding: 96px 0;
+      }
+
+      .section-label {
+        font-size: 12px;
+        color: var(--green);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .section-title {
+        font-size: clamp(26px, 3vw, 38px);
+        color: var(--text);
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+
+      .section-sub {
+        font-size: 15px;
+        color: var(--muted);
+        max-width: 520px;
+      }
+
+      /* ─── Scroll reveal ────────────────────────────────────── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      /* ─── Buttons ──────────────────────────────────────────── */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border-radius: var(--radius);
+        font-family: var(--font);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background var(--transition),
+          color var(--transition),
+          border-color var(--transition);
+        border: 1px solid transparent;
+        white-space: nowrap;
+      }
+
+      .btn-lg {
+        padding: 12px 28px;
+        font-size: 14px;
+      }
+
+      .btn-primary {
+        background: var(--green);
+        color: var(--bg);
+        border-color: var(--green);
+      }
+      .btn-primary:hover {
+        background: #9bd4a8;
+        border-color: #9bd4a8;
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--text);
+        border-color: var(--border);
+      }
+      .btn-outline:hover {
+        border-color: var(--green);
+        color: var(--green);
+      }
+
+      /* ─── Navbar ───────────────────────────────────────────── */
+      .navbar {
         position: fixed;
         top: 0;
         left: 0;
+        right: 0;
+        z-index: 100;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        transition:
+          background var(--transition),
+          border-bottom var(--transition),
+          backdrop-filter var(--transition);
+      }
+      .navbar.scrolled {
+        background: rgba(24, 28, 31, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .navbar .container {
         width: 100%;
-        height: 100%;
-        background: radial-gradient(
-          ellipse at center,
-          #1f2528 0%,
-          #181c1f 100%
-        );
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        z-index: 9999;
-        color: #d3c6aa;
-        overflow: hidden;
+        justify-content: space-between;
       }
 
-      /* Animated circuit background */
-      .circuit-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.1;
-        background-image:
-          linear-gradient(90deg, #7a8478 1px, transparent 1px),
-          linear-gradient(0deg, #7a8478 1px, transparent 1px);
-        background-size: 15px 15px;
-        animation: circuit-move 20s linear infinite;
-      }
-
-      @keyframes circuit-move {
-        0% {
-          background-position: 0 0;
-        }
-        100% {
-          background-position: 15px 15px;
-        }
-      }
-
-      /* Main content wrapper */
-      .loading-content {
-        position: relative;
-        z-index: 1;
+      .nav-logo {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 48px;
-      }
-
-      /* Logo and Title */
-      .loading-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        animation: fade-in 0.6s ease-out;
-      }
-
-      .loading-title {
-        font-size: 32px;
+        gap: 10px;
+        font-size: 18px;
         font-weight: 600;
-        color: #d3c6aa;
-        text-align: center;
-        letter-spacing: -0.5px;
-        animation: fade-in 0.6s ease-out 0.2s both;
+        color: var(--text);
       }
-
-      .loading-subtitle {
-        font-size: 14px;
-        color: #7a8478;
-        text-align: center;
-        animation: fade-in 0.6s ease-out 0.4s both;
+      .nav-logo-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 6px rgba(131, 192, 146, 0.7);
+        animation: pulse 2.4s ease-in-out infinite;
       }
-
-      /* Loading Animation */
-      .loading-animation {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-        animation: fade-in 0.6s ease-out 0.6s both;
-      }
-
-      /* Progress bar */
-      .loading-progress-container {
-        width: 320px;
-        height: 6px;
-        background-color: #272e33;
-        border-radius: 3px;
-        overflow: hidden;
-        position: relative;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-      }
-
-      .loading-progress-bar {
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          #7a8478 0%,
-          #83c092 50%,
-          #7a8478 100%
-        );
-        background-size: 200% 100%;
-        border-radius: 3px;
-        animation: loading-progress 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        box-shadow: 0 0 10px rgba(131, 192, 146, 0.5);
-      }
-
-      @keyframes loading-progress {
-        0% {
-          transform: translateX(-100%);
-          background-position: 0% 0;
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
         }
         50% {
-          background-position: 100% 0;
-        }
-        100% {
-          transform: translateX(200%);
-          background-position: 200% 0;
+          opacity: 0.6;
+          transform: scale(0.85);
         }
       }
 
-      .loading-text {
-        font-size: 13px;
-        color: #7a8478;
-        margin-top: 12px;
-        animation: loading-dots 1.5s ease-in-out infinite;
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
       }
 
-      @keyframes loading-dots {
-        0%,
-        20% {
-          content: 'Loading';
+      .nav-link {
+        font-size: 16px;
+        color: var(--muted);
+        transition: color var(--transition);
+      }
+      .nav-link:hover {
+        color: var(--text);
+      }
+
+      /* ─── Hero ─────────────────────────────────────────────── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding-top: 56px;
+      }
+
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.07;
+        background-image:
+          linear-gradient(90deg, var(--muted) 1px, transparent 1px),
+          linear-gradient(0deg, var(--muted) 1px, transparent 1px);
+        background-size: 32px 32px;
+        animation: grid-drift 30s linear infinite;
+      }
+      @keyframes grid-drift {
+        from {
+          background-position: 0 0;
         }
-        40% {
-          content: 'Loading.';
+        to {
+          background-position: 32px 32px;
         }
-        60% {
-          content: 'Loading..';
-        }
-        80%,
-        100% {
-          content: 'Loading...';
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-grid {
+          animation: none;
         }
       }
 
-      /* Fade in animation */
-      @keyframes fade-in {
+      /* radial vignette over grid */
+      .hero-vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 80% 70% at 50% 50%,
+          transparent 20%,
+          var(--bg) 100%
+        );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        padding: 80px 0;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--green);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+        animation: fade-up 0.6s ease both;
+      }
+      .hero-eyebrow::before {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: var(--green);
+      }
+
+      .hero-title {
+        font-size: clamp(48px, 7vw, 80px);
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.05;
+        letter-spacing: -1.5px;
+        margin-bottom: 24px;
+        animation: fade-up 0.6s ease 0.1s both;
+      }
+      .hero-title span {
+        color: var(--green);
+      }
+
+      .hero-desc {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.75;
+        max-width: 520px;
+        margin-bottom: 40px;
+        animation: fade-up 0.6s ease 0.2s both;
+      }
+
+      .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        animation: fade-up 0.6s ease 0.3s both;
+      }
+
+      .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        margin-top: 64px;
+        animation: fade-up 0.6s ease 0.4s both;
+        border-left: 1px solid var(--border);
+      }
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 0 32px 0 24px;
+        border-left: 2px solid transparent;
+        transition: border-color var(--transition);
+      }
+      .stat-item:first-child {
+        padding-left: 24px;
+      }
+      .stat-item:hover {
+        border-left-color: var(--green);
+      }
+      .stat-value {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @keyframes fade-up {
         from {
           opacity: 0;
           transform: translateY(20px);
@@ -391,112 +550,743 @@
         }
       }
 
-      /* Fade out when Flutter is ready */
-      .flutter-ready .loading-container {
-        opacity: 0;
-        transition: opacity 0.6s ease-out;
-        pointer-events: none;
+      /* ─── Features ─────────────────────────────────────────── */
+      .features {
+        background: var(--bg);
       }
 
-      #flutter-container {
+      .features-header {
+        margin-bottom: 56px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      @media (max-width: 900px) {
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .feature-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-top: 2px solid transparent;
+        border-radius: var(--radius);
+        padding: 28px 24px;
+        transition:
+          border-top-color var(--transition),
+          transform var(--transition);
+      }
+      .feature-card:hover {
+        border-top-color: var(--green);
+        transform: translateY(-3px);
+      }
+
+      .feature-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 10px;
+        letter-spacing: 0.02em;
+      }
+
+      .feature-desc {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      /* ─── Gallery ──────────────────────────────────────────── */
+      .gallery {
+        background: var(--bg);
+      }
+
+      .gallery-header {
+        margin-bottom: 40px;
+      }
+
+      .gallery-scroll {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      @media (max-width: 900px) {
+        .gallery-scroll {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .gallery-scroll {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .gallery-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          border-color var(--transition),
+          transform var(--transition);
+      }
+      .gallery-card:hover {
+        border-color: var(--cyan);
+        transform: translateY(-2px);
+      }
+
+      .gallery-img-wrap {
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .gallery-img-wrap img {
         width: 100%;
         height: 100%;
-        margin: 0;
-        padding: 0;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .gallery-card:hover .gallery-img-wrap img {
+        transform: scale(1.04);
       }
 
-      /* Responsive adjustments */
+      .gallery-info {
+        padding: 12px 14px;
+      }
+      .gallery-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .gallery-desc {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* ─── FAQ ──────────────────────────────────────────────── */
+      .faq {
+        background: var(--bg);
+      }
+
+      .faq-header {
+        margin-bottom: 48px;
+      }
+
+      .faq-list {
+        max-width: 720px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .faq-item {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--bg-card);
+        transition: border-color var(--transition);
+      }
+      .faq-item[open],
+      .faq-item:focus-within {
+        border-color: var(--green);
+      }
+
+      .faq-question {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 22px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        cursor: pointer;
+        user-select: none;
+        transition: color var(--transition);
+      }
+      .faq-question::-webkit-details-marker {
+        display: none;
+      }
+      .faq-question::marker {
+        display: none;
+      }
+
+      .faq-question:hover {
+        color: var(--green);
+      }
+
+      .faq-chevron {
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        color: var(--muted);
+        transition: transform var(--transition);
+      }
+      .faq-item[open] .faq-chevron {
+        transform: rotate(180deg);
+        color: var(--green);
+      }
+
+      .faq-answer {
+        padding: 14px 22px 20px;
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.8;
+        border-top: 1px solid var(--border);
+      }
+
+      /* ─── CTA Banner ───────────────────────────────────────── */
+      .cta-banner {
+        background: var(--bg-card);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .cta-inner {
+        padding: 72px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .cta-text .section-title {
+        margin-bottom: 8px;
+      }
+      .cta-text p {
+        font-size: 15px;
+        color: var(--muted);
+      }
+
+      /* ─── Footer ───────────────────────────────────────────── */
+      .footer {
+        padding: 32px 0;
+        border-top: 1px solid var(--border);
+      }
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .footer-brand strong {
+        color: var(--text);
+      }
+      .footer-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-links a {
+        font-size: 14px;
+        color: var(--muted);
+        transition: color var(--transition);
+      }
+      .footer-links a:hover {
+        color: var(--text);
+      }
+
+      /* ─── Divider ──────────────────────────────────────────── */
+      .divider {
+        height: 1px;
+        background: var(--border);
+        margin: 0;
+      }
+
+      /* ─── Responsive tweaks ────────────────────────────────── */
       @media (max-width: 640px) {
-        .loading-title {
-          font-size: 24px;
+        .hero-stats {
+          flex-wrap: wrap;
+          gap: 24px;
         }
-        .loading-progress-container {
-          width: 260px;
+        .cta-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     </style>
-
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-5P40R1Q7CD', {
-        page_path: window.location.pathname,
-        page_title: 'Logic Gate Simulator',
-        send_page_view: true,
-      });
-    </script>
   </head>
+
   <body>
-    <div class="loading-container" id="loading">
-      <div class="circuit-background"></div>
-
-      <div class="loading-content">
-        <div class="loading-header">
-          <h1 class="loading-title">Logic Gate Simulator</h1>
-          <p class="loading-subtitle">
-            Building your digital circuit workspace
-          </p>
-        </div>
-
-        <div class="loading-animation">
-          <div class="loading-progress-container">
-            <div class="loading-progress-bar"></div>
-          </div>
-
-          <div class="loading-text">Loading...</div>
+    <!-- ── Navbar ──────────────────────────────────────────────── -->
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <div class="container">
+        <a class="nav-logo" href="index.html" aria-label="Gate Lab home">
+          <span class="nav-logo-dot" aria-hidden="true"></span>
+          Gate Lab
+        </a>
+        <div class="nav-actions">
+          <a class="nav-link" href="#features">Features</a>
+          <a class="nav-link" href="#gallery">Samples</a>
+          <a class="nav-link" href="#faq">FAQ</a>
+          <a class="btn btn-primary" href="app.html">Launch App</a>
         </div>
       </div>
-    </div>
+    </nav>
 
-    <div id="flutter-container"></div>
+    <!-- ── Hero ────────────────────────────────────────────────── -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Design circuits.<br />
+            <span>Simulate</span> logic.
+          </h1>
+          <p class="hero-desc">
+            Gate Lab is a free, browser-based digital circuit simulator. Build
+            and test anything from basic logic gates to custom CPUs — with
+            real-time simulation and live collaboration.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="app.html">Launch App</a>
+            <a class="btn btn-outline btn-lg" href="#gallery">View Examples</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-value">40+</span>
+              <span class="stat-label">Built-in Components types</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">Programable Components</span>
+              <span class="stat-label"
+                >Custom Script Language to define logic</span
+              >
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">Free</span>
+              <span class="stat-label">No account needed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script src="flutter_bootstrap.js" async></script>
+    <div class="divider"></div>
+
+    <!-- ── Features ────────────────────────────────────────────── -->
+    <section class="section features" id="features" aria-label="Features">
+      <div class="container">
+        <header class="features-header reveal">
+          <p class="section-label">Capabilities</p>
+          <h2 class="section-title">
+            Everything you need to design digital circuits
+          </h2>
+          <p class="section-sub">
+            A comprehensive toolkit for students, engineers, and educators — all
+            in your browser.
+          </p>
+        </header>
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Logic Gates</h3>
+            <p class="feature-desc">
+              AND, OR, NOT, NAND, NOR, XOR, XNOR — all with configurable input
+              counts. Wire them together and simulate instantly.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Flip-Flops & Registers</h3>
+            <p class="feature-desc">
+              D, T, SR, JK flip-flops with CLK and RST. 4, 8, and 16-bit
+              registers with load, increment, and clear controls.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Memory & Counters</h3>
+            <p class="feature-desc">
+              128×4 and 128×8 RAM with a built-in memory editor. 2, 4, and 8-bit
+              synchronous counters with reset.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Displays</h3>
+            <p class="feature-desc">
+              7-segment display and decoder, character LCD (1×16, 2×16, 4×16),
+              and matrix display up to 64×64 pixels.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Oscilloscope</h3>
+            <p class="feature-desc">
+              1, 2, 4, or 8-channel oscilloscope. Attach to any wire and view
+              HIGH/LOW waveform history over time.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Truth Table Component</h3>
+            <p class="feature-desc">
+              Define combinational logic by filling in a table — up to 8 inputs
+              and 8 outputs. No scripting required.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Programmable Components</h3>
+            <p class="feature-desc">
+              Write combinational or clocked logic in the built-in scripting
+              language. Supports internal state, clock events, and custom pins.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Signal Tunnels & Buses</h3>
+            <p class="feature-desc">
+              Route signals across the canvas without wires using tunnels.
+              Multi-bit bus components handle parallel data paths.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Export & Share</h3>
+            <p class="feature-desc">
+              Save workspaces as <code>.lgs</code> files. Export circuits as PNG
+              or SVG. Import memory contents with <code>.lgm</code> files.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Gallery ─────────────────────────────────────────────── -->
+    <section class="section gallery" id="gallery" aria-label="Sample circuits">
+      <div class="container">
+        <div class="gallery-header reveal">
+          <div>
+            <p class="section-label">Examples</p>
+            <h2 class="section-title">See what you can build</h2>
+          </div>
+        </div>
+
+        <div class="gallery-scroll" id="gallery-grid">
+          <!-- Cards rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── FAQ ─────────────────────────────────────────────────── -->
+    <section class="section faq" id="faq" aria-label="FAQ">
+      <div class="container">
+        <header class="faq-header reveal">
+          <p class="section-label">Help</p>
+          <h2 class="section-title">Frequently asked questions</h2>
+        </header>
+
+        <dl class="faq-list reveal">
+          <details
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="faq-question" itemprop="name">
+              What is Gate Lab?
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </summary>
+            <div
+              class="faq-answer"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Gate Lab is an interactive tool for building and testing digital
+                circuits using virtual logic gates like AND, OR, NOT, and XOR.
+                It helps students and engineers understand digital electronics
+                through real-time simulation.
+              </p>
+            </div>
+          </details>
+
+          <details
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="faq-question" itemprop="name">
+              What components are available?
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </summary>
+            <div
+              class="faq-answer"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                The simulator includes all basic logic gates (AND, OR, NOT, XOR,
+                NAND, NOR, XNOR), flip-flops (D, T, JK, SR), counters, shift
+                registers, multiplexers, demultiplexers, encoders, decoders,
+                adders, comparators, memory (RAM/ROM), registers, tri-state
+                buffers, bus systems, oscilloscope, 7-segment displays,
+                character LCD, clock generators, and custom programmable
+                components.
+              </p>
+            </div>
+          </details>
+
+          <details
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="faq-question" itemprop="name">
+              Can I create custom components?
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </summary>
+            <div
+              class="faq-answer"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Yes! The simulator supports custom components with scripting
+                capabilities, allowing you to define your own logic and create
+                reusable components for complex designs.
+              </p>
+            </div>
+          </details>
+
+          <details
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="faq-question" itemprop="name">
+              Can I collaborate with others?
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </summary>
+            <div
+              class="faq-answer"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Yes, the simulator supports real-time multiplayer collaboration.
+                You can invite friends or colleagues to join your session and
+                build circuits together simultaneously.
+              </p>
+            </div>
+          </details>
+        </dl>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── CTA Banner ───────────────────────────────────────────── -->
+    <section class="cta-banner" aria-label="Call to action">
+      <div class="container">
+        <div class="cta-inner reveal">
+          <div class="cta-text">
+            <h2 class="section-title">Ready to build?</h2>
+            <p>Open the simulator in your browser — no download, no sign-up.</p>
+          </div>
+          <a class="btn btn-primary btn-lg" href="app.html">
+            Launch Gate Lab
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ───────────────────────────────────────────────── -->
+    <footer class="footer" aria-label="Footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <strong>Gate Lab</strong>
+            <span>© 2025 — LGSIM</span>
+          </div>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="privacy.html"><b>Privacy Policy</b></a>
+          </nav>
+        </div>
+      </div>
+    </footer>
 
     <script>
-      window.addEventListener('flutter-first-frame', function () {
-        document.body.classList.add('flutter-ready');
+      // ── Navbar scroll state ───────────────────────────────────
+      const navbar = document.getElementById('navbar');
+      window.addEventListener(
+        'scroll',
+        () => {
+          navbar.classList.toggle('scrolled', window.scrollY > 20);
+        },
+        { passive: true },
+      );
 
-        const gtagScript = document.createElement('script');
-        gtagScript.src =
-          'https://www.googletagmanager.com/gtag/js?id=G-5P40R1Q7CD';
-        gtagScript.async = true;
-        document.head.appendChild(gtagScript);
+      // ── Gallery data ──────────────────────────────────────────
+      const circuits = [
+        { id: '4_bit_alu', name: '4-Bit ALU', desc: 'Arithmetic logic unit' },
+        {
+          id: '7_segment',
+          name: '7-Segment Display',
+          desc: 'BCD decoder and display driver',
+        },
+        {
+          id: '8_bit_counter',
+          name: '8-Bit Counter',
+          desc: 'Synchronous binary counter',
+        },
+        {
+          id: 'custom_4x4_ram',
+          name: 'Custom 4×4 RAM',
+          desc: 'Addressable memory array',
+        },
+        {
+          id: 'invader_matrix_display',
+          name: 'Matrix Display',
+          desc: 'Space invader dot-matrix',
+        },
+        {
+          id: 'keyboard_driver',
+          name: 'Keyboard Driver',
+          desc: 'PS/2 keyboard interface',
+        },
+        {
+          id: 'keypad_4x4_driver',
+          name: '4×4 Keypad Driver',
+          desc: 'Matrix keypad scanner',
+        },
+        {
+          id: 'lcd_hello_world',
+          name: 'LCD Hello World',
+          desc: 'Character LCD controller',
+        },
+      ];
 
-        setTimeout(() => {
-          const loading = document.getElementById('loading');
-          if (loading) loading.style.display = 'none';
-        }, 600);
+      function renderGallery() {
+        const grid = document.getElementById('gallery-grid');
+        grid.innerHTML = circuits
+          .map(
+            (c) => `
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/${c.id}_dark.webp"
+                alt="${c.name} circuit diagram — ${c.desc}"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">${c.name}</p>
+              <p class="gallery-desc">${c.desc}</p>
+            </div>
+          </article>
+        `,
+          )
+          .join('');
+        // Re-observe new cards
+        observeReveal();
+      }
 
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'page_view', {
-            page_title: 'Logic Gate Simulator',
-            page_location: window.location.href,
-          });
-        }
-      });
+      // ── Scroll-reveal ─────────────────────────────────────────
+      function observeReveal() {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
 
-      setTimeout(() => {
-        document.body.classList.add('flutter-ready');
-        const loading = document.getElementById('loading');
+        document
+          .querySelectorAll('.reveal:not(.visible)')
+          .forEach((el) => io.observe(el));
+      }
 
-        if (loading) loading.style.display = 'none';
-      }, 30000);
-
-      window.addEventListener('error', function (e) {
-        var errorMessage = e.error ? e.error.toString() : e.message;
-
-        console.error('Application error:', errorMessage);
-
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'exception', {
-            description: errorMessage,
-            fatal: false,
-          });
-        }
-      });
+      // ── Init ──────────────────────────────────────────────────
+      renderGallery();
+      observeReveal();
     </script>
   </body>
 </html>

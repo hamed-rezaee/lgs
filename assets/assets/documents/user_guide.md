@@ -1,6 +1,6 @@
-# Logic Gate Simulator — User Guide
+# Gate Lab — User Guide
 
-This guide details the features, controls, and components available in the Logic Gate Simulator.
+This guide details the features, controls, and components available in Gate Lab.
 
 ## Contents
 
@@ -203,7 +203,7 @@ Note: Undo (**Ctrl+Z**) and Redo (**Ctrl+Y**) are available as dedicated buttons
 
 ### Collaboration menu
 
-- **Collaboration Dialog** (**Alt+Shift+C**): open the real-time collaboration panel to host or join a session
+- **Collaboration Session** (**Alt+Shift+C**): open the real-time collaboration panel to host or join a session
 
 ### Help menu
 
