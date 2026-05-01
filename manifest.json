@@ -1,6 +1,6 @@
 {
   "name": "Logic Gate Simulator - Digital Circuit Builder & Designer Tool",
-  "short_name": "LGSim",
+  "short_name": "Logic Gate Simulator",
   "description": "Free online logic gate simulator for building and testing digital circuits. Interactive educational tool for learning digital electronics with logic gates, flip-flops, counters, and memory components. Perfect for students, educators, and engineers.",
   "start_url": "/?utm_source=pwa&utm_medium=standalone",
   "scope": "/",
@@ -13,7 +13,13 @@
   "edge_side_panel": {
     "preferred_width": 400
   },
-  "categories": ["education", "utilities", "productivity", "developer", "science"],
+  "categories": [
+    "education",
+    "utilities",
+    "productivity",
+    "developer",
+    "science"
+  ],
   "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
   "screenshots": [
     {
