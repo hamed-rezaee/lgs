@@ -93,7 +93,7 @@
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Gate Lab",
-        "alternateName": "GLab — Free Online Digital Circuit Simulator",
+        "alternateName": "Gate Lab Digital Circuit Simulator",
         "url": "https://lgsim.io/",
         "description": "Free collaborative digital circuit simulator for building, testing, and sharing digital circuits. Features real-time multiplayer editing, custom scriptable components, oscilloscopes, and a comprehensive library of digital logic parts.",
         "applicationCategory": "EducationalApplication",
@@ -138,15 +138,15 @@
             "name": "What is Gate Lab?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Gate Lab is an interactive tool for building and testing digital circuits using virtual logic gates like AND, OR, NOT, and XOR. It helps students and engineers understand digital electronics through real-time simulation."
+              "text": "Gate Lab is a free, browser-based digital circuit simulator. You can drag and drop logic gates, connect wires, and watch signals propagate in real time — no installation required. It covers everything from basic Boolean logic to complex designs like ALUs, CPUs, and custom memory systems, making it ideal for students, educators, and engineers."
             }
           },
           {
             "@type": "Question",
-            "name": "Is Gate Lab free?",
+            "name": "Do I need to install anything?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, Gate Lab is completely free to use. No registration or payment required. You can build, test, and save circuits directly in your browser."
+              "text": "No. Gate Lab runs entirely in your web browser — just open the page and start building. It works in Chrome, Firefox, Edge, and Safari on desktop. No plugins, no downloads, no sign-up."
             }
           },
           {
@@ -154,15 +154,15 @@
             "name": "What components are available?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The simulator includes all basic logic gates (AND, OR, NOT, XOR, NAND, NOR, XNOR), flip-flops (D, T, JK, SR), counters, shift registers, multiplexers, demultiplexers, encoders, decoders, adders, comparators, memory (RAM/ROM), registers, tri-state buffers, bus systems, oscilloscope, 7-segment displays, character LCD, clock generators, and custom programmable components."
+              "text": "Gate Lab includes 40+ component types across several categories: logic gates (AND, OR, NOT, NAND, NOR, XOR, XNOR), sequential logic (D, T, JK, SR flip-flops; 4/8/16-bit registers; 2/4/8-bit counters; shift registers), data routing (multiplexers, demultiplexers, encoders, decoders, tri-state buffers, signal tunnels, buses), arithmetic (adders, comparators), memory (128×4 and 128×8 RAM, ROM), I/O (7-segment display and decoder, character LCD, 64×64 matrix display, clock generator), instrumentation (1/2/4/8-channel oscilloscope), and fully programmable custom components."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I create custom components?",
+            "name": "How do custom programmable components work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes! The simulator supports custom components with scripting capabilities, allowing you to define your own logic and create reusable components for complex designs."
+              "text": "Custom components use Gate Lab's built-in scripting language to define any logic you need. You declare input and output pins, then write combinational logic or clocked sequential behavior with internal state variables. This lets you build anything that isn't covered by the standard library — from a custom ALU operation to a complete processor control unit — and reuse it as a component in any circuit."
             }
           },
           {
@@ -170,7 +170,7 @@
             "name": "Can I collaborate with others?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, the simulator supports real-time multiplayer collaboration. You can invite friends or colleagues to join your session and build circuits together simultaneously."
+              "text": "Yes. Gate Lab supports real-time multiplayer collaboration. Share your session link and other users can join instantly — no account needed. Everyone can place components, draw wires, and run the simulation together, with each participant's cursor visible to the group."
             }
           }
         ]
@@ -869,13 +869,11 @@
           <div class="hero-stats">
             <div class="stat-item">
               <span class="stat-value">40+</span>
-              <span class="stat-label">Built-in Components types</span>
+              <span class="stat-label">Built-in component types</span>
             </div>
             <div class="stat-item">
-              <span class="stat-value">Programable Components</span>
-              <span class="stat-label"
-                >Custom Script Language to define logic</span
-              >
+              <span class="stat-value">Programmable Components</span>
+              <span class="stat-label">Custom scripting language</span>
             </div>
             <div class="stat-item">
               <span class="stat-value">Free</span>
@@ -997,7 +995,7 @@
           <h2 class="section-title">Frequently asked questions</h2>
         </header>
 
-        <dl class="faq-list reveal">
+        <div class="faq-list reveal">
           <details
             class="faq-item"
             itemscope
@@ -1028,10 +1026,49 @@
               itemtype="https://schema.org/Answer"
             >
               <p itemprop="text">
-                Gate Lab is an interactive tool for building and testing digital
-                circuits using virtual logic gates like AND, OR, NOT, and XOR.
-                It helps students and engineers understand digital electronics
-                through real-time simulation.
+                Gate Lab is a free, browser-based digital circuit simulator. You
+                can drag and drop logic gates, connect wires, and watch signals
+                propagate in real time — no installation required. It covers
+                everything from basic Boolean logic to complex designs like
+                ALUs, CPUs, and custom memory systems, making it ideal for
+                students, educators, and engineers.
+              </p>
+            </div>
+          </details>
+
+          <details
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="faq-question" itemprop="name">
+              Do I need to install anything?
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </summary>
+            <div
+              class="faq-answer"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                No. Gate Lab runs entirely in your web browser — just open the
+                page and start building. It works in Chrome, Firefox, Edge, and
+                Safari on desktop. No plugins, no downloads, no sign-up.
               </p>
             </div>
           </details>
@@ -1066,14 +1103,39 @@
               itemtype="https://schema.org/Answer"
             >
               <p itemprop="text">
-                The simulator includes all basic logic gates (AND, OR, NOT, XOR,
-                NAND, NOR, XNOR), flip-flops (D, T, JK, SR), counters, shift
-                registers, multiplexers, demultiplexers, encoders, decoders,
-                adders, comparators, memory (RAM/ROM), registers, tri-state
-                buffers, bus systems, oscilloscope, 7-segment displays,
-                character LCD, clock generators, and custom programmable
-                components.
+                Over 40 component types across several categories:
               </p>
+              <ul style="margin: 10px 0 0 18px; line-height: 2">
+                <li>
+                  <strong>Logic gates</strong> — AND, OR, NOT, NAND, NOR, XOR,
+                  XNOR (configurable input count)
+                </li>
+                <li>
+                  <strong>Sequential logic</strong> — D/T/JK/SR flip-flops,
+                  4/8/16-bit registers, 2/4/8-bit counters, shift registers
+                </li>
+                <li>
+                  <strong>Data routing</strong> — multiplexers, demultiplexers,
+                  encoders, decoders, tri-state buffers, signal tunnels, buses
+                </li>
+                <li><strong>Arithmetic</strong> — adders, comparators</li>
+                <li>
+                  <strong>Memory</strong> — 128×4 and 128×8 RAM with built-in
+                  editor, ROM
+                </li>
+                <li>
+                  <strong>I/O &amp; displays</strong> — 7-segment display and
+                  decoder, character LCD, 64×64 matrix display, clock generator
+                </li>
+                <li>
+                  <strong>Instrumentation</strong> — 1/2/4/8-channel
+                  oscilloscope
+                </li>
+                <li>
+                  <strong>Custom</strong> — fully programmable components via
+                  scripting
+                </li>
+              </ul>
             </div>
           </details>
 
@@ -1084,7 +1146,7 @@
             itemtype="https://schema.org/Question"
           >
             <summary class="faq-question" itemprop="name">
-              Can I create custom components?
+              How do custom programmable components work?
               <svg
                 class="faq-chevron"
                 viewBox="0 0 16 16"
@@ -1107,9 +1169,13 @@
               itemtype="https://schema.org/Answer"
             >
               <p itemprop="text">
-                Yes! The simulator supports custom components with scripting
-                capabilities, allowing you to define your own logic and create
-                reusable components for complex designs.
+                Custom components use Gate Lab's built-in scripting language to
+                define any logic you need. You declare input and output pins,
+                then write combinational logic or clocked sequential behavior
+                with internal state variables. This lets you build anything
+                beyond the standard library — from a custom ALU operation to a
+                complete processor control unit — and reuse it as a component
+                anywhere in your circuit.
               </p>
             </div>
           </details>
@@ -1144,13 +1210,15 @@
               itemtype="https://schema.org/Answer"
             >
               <p itemprop="text">
-                Yes, the simulator supports real-time multiplayer collaboration.
-                You can invite friends or colleagues to join your session and
-                build circuits together simultaneously.
+                Yes. Gate Lab supports real-time multiplayer collaboration.
+                Share your session link and others can join instantly — no
+                account needed. Everyone can place components, draw wires, and
+                run the simulation together, with each participant's cursor
+                visible to the group.
               </p>
             </div>
           </details>
-        </dl>
+        </div>
       </div>
     </section>
 
@@ -1177,7 +1245,7 @@
         <div class="footer-inner">
           <div class="footer-brand">
             <strong>Gate Lab</strong>
-            <span>© 2025 — LGSIM</span>
+            <span>© 2026 — LGSIM</span>
           </div>
           <nav class="footer-links" aria-label="Footer navigation">
             <a href="privacy.html"><b>Privacy Policy</b></a>
