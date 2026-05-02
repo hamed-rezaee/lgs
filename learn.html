@@ -1,0 +1,1482 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>
+      Learn Digital Logic — Gates, Flip-Flops, Boolean Algebra | Gate Lab
+    </title>
+    <meta
+      name="description"
+      content="Learn digital logic from first principles: Boolean algebra, logic gates (AND, OR, NOT, XOR), truth tables, flip-flops, counters, memory, and how to build a CPU. Hands-on examples you can open directly in the Gate Lab simulator."
+    />
+    <meta
+      name="keywords"
+      content="learn digital logic, Boolean algebra tutorial, logic gates explained, AND OR NOT XOR gate, flip-flop tutorial, D flip-flop, JK flip-flop, sequential logic, combinational logic, truth table, binary adder, how CPU works, digital electronics for beginners, gate lab tutorial"
+    />
+    <meta name="author" content="Gate Lab" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://lgsim.io/learn.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://lgsim.io/learn.html" />
+    <meta
+      property="og:title"
+      content="Learn Digital Logic — Gates, Flip-Flops, Boolean Algebra | Gate Lab"
+    />
+    <meta
+      property="og:description"
+      content="A free, comprehensive guide to digital logic: Boolean algebra, logic gates, flip-flops, counters, memory, and CPU design — with live examples in the Gate Lab simulator."
+    />
+    <meta property="og:image" content="https://lgsim.io/icons/Icon-512.png" />
+    <meta property="og:site_name" content="Gate Lab" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://lgsim.io/learn.html" />
+    <meta name="twitter:title" content="Learn Digital Logic — Gate Lab" />
+    <meta
+      name="twitter:description"
+      content="Free guide to digital logic, Boolean algebra, logic gates, flip-flops, and CPU design."
+    />
+    <meta name="twitter:image" content="https://lgsim.io/icons/Icon-512.png" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+    <link rel="shortcut icon" href="icons/Icon-512.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="icons/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4223546716865362"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Performance hints -->
+    <link rel="dns-prefetch" href="https://www.gstatic.com" />
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="share_tech_mono.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+
+    <!-- Structured Data: Article -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Learn Digital Logic — Boolean Algebra, Logic Gates, Flip-Flops, and CPU Design",
+        "description": "A comprehensive guide to digital logic for beginners and students: Boolean algebra, logic gates, truth tables, flip-flops, counters, memory, and building a CPU — with interactive examples in Gate Lab.",
+        "url": "https://lgsim.io/learn.html",
+        "author": {
+          "@type": "Organization",
+          "name": "Gate Lab Team",
+          "url": "https://lgsim.io/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Gate Lab",
+          "url": "https://lgsim.io/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://lgsim.io/icons/Icon-512.png"
+          }
+        },
+        "datePublished": "2026-05-02",
+        "dateModified": "2026-05-02",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://lgsim.io/learn.html"
+        },
+        "about": [
+          { "@type": "Thing", "name": "Digital Logic" },
+          { "@type": "Thing", "name": "Boolean Algebra" },
+          { "@type": "Thing", "name": "Logic Gates" },
+          { "@type": "Thing", "name": "Flip-Flops" },
+          { "@type": "Thing", "name": "Computer Architecture" }
+        ]
+      }
+    </script>
+
+    <style>
+      /* ─── Tokens ───────────────────────────────────────────── */
+      :root {
+        --bg: #181c1f;
+        --bg-card: #272e33;
+        --surface: #3d484d;
+        --border: #3d484d;
+        --text: #d3c6aa;
+        --muted: #7a8478;
+        --green: #83c092;
+        --cyan: #7fbbb3;
+        --danger: #e67e80;
+        --radius: 0px;
+        --font: 'Share Tech Mono', 'Courier New', monospace;
+        --transition: 0.2s ease;
+      }
+
+      /* ─── Reset ─────────────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @font-face {
+        font-family: 'Share Tech Mono';
+        src: url('share_tech_mono.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font);
+        font-size: 16px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--green);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      code {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        padding: 1px 6px;
+        font-family: var(--font);
+        font-size: 0.9em;
+        color: var(--cyan);
+      }
+
+      /* ─── Layout ────────────────────────────────────────────── */
+      .site-wrap {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        min-height: 100vh;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        gap: 48px;
+      }
+
+      @media (max-width: 860px) {
+        .site-wrap {
+          grid-template-columns: 1fr;
+          padding: 0 16px;
+        }
+        .sidebar {
+          display: none;
+        }
+        .sidebar-mobile {
+          display: block;
+        }
+      }
+
+      /* ─── Navbar ────────────────────────────────────────────── */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        background: rgba(24, 28, 31, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .navbar .inner {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .nav-logo-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 6px rgba(131, 192, 146, 0.7);
+        animation: pulse 2.4s ease-in-out infinite;
+        flex-shrink: 0;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(0.85);
+        }
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav-link {
+        font-size: 15px;
+        color: var(--muted);
+        transition: color var(--transition);
+        text-decoration: none;
+      }
+      .nav-link:hover {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: var(--radius);
+        font-family: var(--font);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid transparent;
+        text-decoration: none;
+        transition:
+          background var(--transition),
+          border-color var(--transition),
+          color var(--transition);
+      }
+      .btn-primary {
+        background: var(--green);
+        color: var(--bg);
+        border-color: var(--green);
+      }
+      .btn-primary:hover {
+        background: #9bd4a8;
+        border-color: #9bd4a8;
+        text-decoration: none;
+      }
+
+      /* ─── Page structure ────────────────────────────────────── */
+      .page-body {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+
+      /* ─── Sidebar (TOC) ─────────────────────────────────────── */
+      .sidebar {
+        padding-top: 80px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 72px;
+        padding: 20px 0;
+        border-left: 2px solid var(--border);
+        padding-left: 20px;
+      }
+
+      .toc-title {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+
+      .toc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .toc-list a {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color var(--transition);
+        display: block;
+        padding: 2px 0;
+      }
+      .toc-list a:hover {
+        color: var(--green);
+        text-decoration: none;
+      }
+
+      .toc-list .toc-sub {
+        padding-left: 14px;
+        font-size: 12px;
+      }
+
+      /* ─── Article ───────────────────────────────────────────── */
+      .article-header {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 32px;
+        margin-bottom: 48px;
+      }
+
+      .article-label {
+        font-size: 12px;
+        color: var(--green);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .article-title {
+        font-size: clamp(28px, 4vw, 44px);
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        margin-bottom: 16px;
+      }
+
+      .article-meta {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* ─── Content sections ──────────────────────────────────── */
+      .content-section {
+        margin-bottom: 64px;
+      }
+
+      .content-section h2 {
+        font-size: clamp(20px, 2.5vw, 28px);
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        scroll-margin-top: 72px;
+      }
+
+      .content-section h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--text);
+        margin: 28px 0 10px;
+        scroll-margin-top: 72px;
+      }
+
+      .content-section p {
+        margin-bottom: 16px;
+        color: var(--text);
+      }
+
+      .content-section ul,
+      .content-section ol {
+        margin: 0 0 16px 24px;
+        color: var(--text);
+      }
+
+      .content-section li {
+        margin-bottom: 8px;
+        line-height: 1.75;
+      }
+
+      /* ─── Truth table ───────────────────────────────────────── */
+      .truth-table-wrap {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        font-size: 14px;
+        min-width: 240px;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--border);
+        padding: 8px 18px;
+        text-align: center;
+      }
+
+      th {
+        background: var(--bg-card);
+        color: var(--green);
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      td {
+        color: var(--text);
+      }
+
+      tr:hover td {
+        background: var(--bg-card);
+      }
+
+      /* ─── Info boxes ────────────────────────────────────────── */
+      .callout {
+        background: var(--bg-card);
+        border-left: 3px solid var(--green);
+        padding: 16px 20px;
+        margin: 24px 0;
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .callout strong {
+        color: var(--text);
+      }
+
+      .callout-cyan {
+        border-left-color: var(--cyan);
+      }
+
+      /* ─── Gate diagram (ASCII-style boxes) ─────────────────── */
+      .gate-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+        margin: 24px 0;
+      }
+
+      .gate-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        padding: 16px 18px;
+        border-top: 2px solid var(--green);
+      }
+
+      .gate-name {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .gate-rule {
+        font-size: 13px;
+        color: var(--cyan);
+        margin-bottom: 8px;
+      }
+
+      .gate-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* ─── CTA box ───────────────────────────────────────────── */
+      .practice-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-top: 2px solid var(--cyan);
+        padding: 24px 28px;
+        margin: 32px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .practice-box p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--muted);
+        max-width: 480px;
+      }
+
+      .practice-box strong {
+        color: var(--text);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 8px 18px;
+        font-family: var(--font);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          border-color var(--transition),
+          color var(--transition);
+        display: inline-block;
+      }
+
+      .btn-outline:hover {
+        border-color: var(--green);
+        color: var(--green);
+        text-decoration: none;
+      }
+
+      /* ─── Footer ────────────────────────────────────────────── */
+      .footer {
+        border-top: 1px solid var(--border);
+        padding: 28px 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .footer a {
+        color: var(--muted);
+      }
+      .footer a:hover {
+        color: var(--text);
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 24px;
+      }
+
+      @media (max-width: 640px) {
+        .footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .nav-actions .nav-link {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ── Navbar ──────────────────────────────────────────────── -->
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="inner">
+        <a class="nav-logo" href="index.html" aria-label="Gate Lab home">
+          <span class="nav-logo-dot" aria-hidden="true"></span>
+          Gate Lab
+        </a>
+        <div class="nav-actions">
+          <a class="nav-link" href="index.html#features">Features</a>
+          <a class="nav-link" href="index.html#gallery">Samples</a>
+          <a
+            class="nav-link"
+            href="learn.html"
+            aria-current="page"
+            style="color: var(--text)"
+            >Learn</a
+          >
+          <a class="nav-link" href="scripting.html">Scripting</a>
+          <a class="nav-link" href="index.html#faq">FAQ</a>
+          <a class="btn btn-primary" href="app.html">LAUNCH GATE LAB</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ── Two-column layout ───────────────────────────────────── -->
+    <div class="site-wrap">
+      <!-- Sidebar TOC (desktop) -->
+      <aside class="sidebar" aria-label="Table of contents">
+        <nav class="toc">
+          <p class="toc-title">Contents</p>
+          <ol class="toc-list">
+            <li><a href="#what-is-digital-logic">What is digital logic?</a></li>
+            <li><a href="#binary-numbers">Binary numbers</a></li>
+            <li><a href="#boolean-algebra">Boolean algebra</a></li>
+            <li>
+              <a href="#logic-gates">Logic gates</a>
+              <ol class="toc-list">
+                <li class="toc-sub"><a href="#basic-gates">Basic gates</a></li>
+                <li class="toc-sub">
+                  <a href="#universal-gates">Universal gates</a>
+                </li>
+                <li class="toc-sub"><a href="#xor-xnor">XOR &amp; XNOR</a></li>
+              </ol>
+            </li>
+            <li>
+              <a href="#combinational-circuits">Combinational circuits</a>
+            </li>
+            <li>
+              <a href="#sequential-logic">Sequential logic</a>
+              <ol class="toc-list">
+                <li class="toc-sub"><a href="#flip-flops">Flip-flops</a></li>
+                <li class="toc-sub">
+                  <a href="#registers-counters">Registers &amp; counters</a>
+                </li>
+              </ol>
+            </li>
+            <li><a href="#memory">Memory: RAM &amp; ROM</a></li>
+            <li><a href="#building-a-cpu">Building a simple CPU</a></li>
+            <li><a href="#using-gate-lab">Using Gate Lab</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <!-- Main article -->
+      <main class="page-body" id="main-content">
+        <header class="article-header">
+          <p class="article-label">Learning Guide</p>
+          <h1 class="article-title">Digital Logic from First Principles</h1>
+          <p class="article-meta">
+            Updated May 2026 &nbsp;·&nbsp; Covers Boolean algebra, logic gates,
+            flip-flops, memory, and CPU design
+          </p>
+        </header>
+
+        <!-- ── 1. What is digital logic ──────────────────────── -->
+        <section class="content-section" id="what-is-digital-logic">
+          <h2>What is digital logic?</h2>
+          <p>
+            Digital logic is the foundation of every computer, smartphone, and
+            microcontroller on the planet. It is the discipline of processing
+            information using signals that have exactly two states:
+            <strong>HIGH (1)</strong> and <strong>LOW (0)</strong>, typically
+            corresponding to voltage levels (e.g., 3.3 V and 0 V in modern CMOS
+            circuits).
+          </p>
+          <p>
+            Because only two states are possible, the mathematics of digital
+            logic is elegantly simple — it is Boolean algebra, named after
+            mathematician George Boole. Complex behaviour, from adding two
+            64-bit numbers to rendering a 3D scene, emerges from millions or
+            billions of simple two-state switching elements called
+            <strong>transistors</strong>, arranged into logic gates, then into
+            larger functional blocks, and finally into complete systems.
+          </p>
+          <p>Digital logic divides into two broad categories:</p>
+          <ul>
+            <li>
+              <strong>Combinational logic</strong> — outputs depend only on the
+              current inputs; there is no memory. Examples: adders,
+              multiplexers, decoders.
+            </li>
+            <li>
+              <strong>Sequential logic</strong> — outputs depend on current
+              inputs <em>and</em> past state stored in memory elements.
+              Examples: flip-flops, registers, counters, CPUs.
+            </li>
+          </ul>
+          <div class="callout">
+            <strong>Why study this?</strong> Every software abstraction — from a
+            Python list to a GPU shader — ultimately executes as electrical
+            signals passing through logic gates. Understanding digital logic
+            gives you insight into how hardware works, helps you write faster
+            code, and is essential for embedded systems, FPGA design, and
+            computer architecture.
+          </div>
+        </section>
+
+        <!-- ── 2. Binary numbers ─────────────────────────────── -->
+        <section class="content-section" id="binary-numbers">
+          <h2>Binary numbers</h2>
+          <p>
+            Humans count in base 10 (decimal), using ten digit symbols (0–9).
+            Computers use base 2 (binary), with only two digit symbols: 0 and 1.
+            Each digit position in a binary number represents a power of 2:
+          </p>
+          <div class="truth-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Decimal</th>
+                  <th>Binary (4-bit)</th>
+                  <th>Powers of 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>0000</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>0001</td>
+                  <td>2⁰ = 1</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>0010</td>
+                  <td>2¹ = 2</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>0011</td>
+                  <td>2¹ + 2⁰ = 3</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>0111</td>
+                  <td>4 + 2 + 1 = 7</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>1000</td>
+                  <td>2³ = 8</td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>1111</td>
+                  <td>8 + 4 + 2 + 1 = 15</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            A single binary digit is called a <strong>bit</strong>. Eight bits
+            form a <strong>byte</strong>, which can represent 256 different
+            values (0–255). A 32-bit integer can represent over 4 billion
+            values.
+          </p>
+          <p>
+            In Gate Lab, wires carry either a HIGH (1) or LOW (0) signal.
+            Multi-bit bus components let you route groups of wires — for
+            example, an 8-bit bus carries the eight individual bits of a byte in
+            parallel.
+          </p>
+        </section>
+
+        <!-- ── 3. Boolean algebra ────────────────────────────── -->
+        <section class="content-section" id="boolean-algebra">
+          <h2>Boolean algebra</h2>
+          <p>
+            Boolean algebra defines a set of rules for working with values that
+            are either true (1) or false (0). Three fundamental operations form
+            the basis of all digital logic:
+          </p>
+          <ul>
+            <li>
+              <strong>AND (·)</strong>: The result is 1 only if
+              <em>all</em> inputs are 1. Written as <code>A · B</code> or
+              <code>A AND B</code>.
+            </li>
+            <li>
+              <strong>OR (+)</strong>: The result is 1 if
+              <em>at least one</em> input is 1. Written as <code>A + B</code> or
+              <code>A OR B</code>.
+            </li>
+            <li>
+              <strong>NOT (¬ / overbar)</strong>: Inverts the value. Written as
+              <code>¬A</code>, <code>A'</code>, or <code>NOT A</code>.
+            </li>
+          </ul>
+          <h3>Key laws</h3>
+          <p>
+            Boolean algebra obeys laws you can use to simplify expressions
+            before implementing them in hardware:
+          </p>
+          <ul>
+            <li>
+              <strong>Identity</strong>: <code>A · 1 = A</code>,
+              <code>A + 0 = A</code>
+            </li>
+            <li>
+              <strong>Null / domination</strong>: <code>A · 0 = 0</code>,
+              <code>A + 1 = 1</code>
+            </li>
+            <li>
+              <strong>Complement</strong>: <code>A · ¬A = 0</code>,
+              <code>A + ¬A = 1</code>
+            </li>
+            <li>
+              <strong>Idempotency</strong>: <code>A · A = A</code>,
+              <code>A + A = A</code>
+            </li>
+            <li>
+              <strong>De Morgan's theorem</strong>:
+              <code>¬(A · B) = ¬A + ¬B</code> and
+              <code>¬(A + B) = ¬A · ¬B</code>
+            </li>
+            <li>
+              <strong>Distributive</strong>:
+              <code>A · (B + C) = (A · B) + (A · C)</code>
+            </li>
+          </ul>
+          <div class="callout callout-cyan">
+            <strong>De Morgan's theorem</strong> is especially useful: it shows
+            that a NAND gate is equivalent to an OR gate with inverted inputs,
+            and a NOR gate is equivalent to an AND gate with inverted inputs.
+            This means NAND and NOR gates alone can implement any Boolean
+            function — they are called <em>universal gates</em>.
+          </div>
+        </section>
+
+        <!-- ── 4. Logic gates ────────────────────────────────── -->
+        <section class="content-section" id="logic-gates">
+          <h2>Logic gates</h2>
+          <p>
+            A logic gate is an electronic circuit that implements a Boolean
+            operation. Each gate accepts one or more binary inputs and produces
+            a single binary output according to a fixed rule. Gates are the
+            atoms of digital design — every complex circuit is a structured
+            arrangement of gates.
+          </p>
+
+          <h3 id="basic-gates">Basic gates: AND, OR, NOT</h3>
+          <div class="gate-grid">
+            <div class="gate-card">
+              <p class="gate-name">AND</p>
+              <p class="gate-rule"><code>Y = A · B</code></p>
+              <p class="gate-desc">
+                Output is HIGH only when all inputs are HIGH. Think of two
+                switches in series — both must be closed for current to flow.
+              </p>
+            </div>
+            <div class="gate-card">
+              <p class="gate-name">OR</p>
+              <p class="gate-rule"><code>Y = A + B</code></p>
+              <p class="gate-desc">
+                Output is HIGH when at least one input is HIGH. Think of two
+                switches in parallel — either one being closed allows current
+                through.
+              </p>
+            </div>
+            <div class="gate-card">
+              <p class="gate-name">NOT (Inverter)</p>
+              <p class="gate-rule"><code>Y = ¬A</code></p>
+              <p class="gate-desc">
+                Flips the input value. HIGH becomes LOW; LOW becomes HIGH. Used
+                constantly to invert control signals and enable active-low
+                logic.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Truth tables exhaustively list every possible combination of inputs
+            alongside the corresponding output:
+          </p>
+          <div class="truth-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>A</th>
+                  <th>B</th>
+                  <th>AND</th>
+                  <th>OR</th>
+                  <th>NOT A</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="universal-gates">Universal gates: NAND and NOR</h3>
+          <p>
+            NAND ("Not AND") and NOR ("Not OR") are called universal gates
+            because any Boolean function — and therefore any digital circuit —
+            can be built using only NANDs or only NORs. This matters in real
+            chip manufacturing because it means a single standard cell can
+            implement all logic.
+          </p>
+          <div class="gate-grid">
+            <div class="gate-card">
+              <p class="gate-name">NAND</p>
+              <p class="gate-rule"><code>Y = ¬(A · B)</code></p>
+              <p class="gate-desc">
+                AND followed by NOT. Output is LOW only when all inputs are
+                HIGH. A single NAND gate with its inputs tied together acts as a
+                NOT gate.
+              </p>
+            </div>
+            <div class="gate-card">
+              <p class="gate-name">NOR</p>
+              <p class="gate-rule"><code>Y = ¬(A + B)</code></p>
+              <p class="gate-desc">
+                OR followed by NOT. Output is HIGH only when all inputs are LOW.
+                Commonly used to implement SR latches.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="xor-xnor">XOR and XNOR</h3>
+          <div class="gate-grid">
+            <div class="gate-card">
+              <p class="gate-name">XOR</p>
+              <p class="gate-rule"><code>Y = A ⊕ B</code></p>
+              <p class="gate-desc">
+                Output is HIGH when inputs are <em>different</em>. XOR is the
+                core of binary adders — it computes the sum bit without the
+                carry.
+              </p>
+            </div>
+            <div class="gate-card">
+              <p class="gate-name">XNOR</p>
+              <p class="gate-rule"><code>Y = ¬(A ⊕ B)</code></p>
+              <p class="gate-desc">
+                Output is HIGH when inputs are <em>equal</em>. XNOR is used in
+                equality comparators and error-checking circuits.
+              </p>
+            </div>
+          </div>
+
+          <div class="truth-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>A</th>
+                  <th>B</th>
+                  <th>NAND</th>
+                  <th>NOR</th>
+                  <th>XOR</th>
+                  <th>XNOR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="practice-box">
+            <p>
+              <strong>Try it:</strong> Place an AND, OR, and XOR gate in Gate
+              Lab. Attach two input pins and one output display to each. Toggle
+              the inputs to verify every row of the truth tables above.
+            </p>
+            <a class="btn btn-outline" href="app.html">LAUNCH GATE LAB</a>
+          </div>
+        </section>
+
+        <!-- ── 5. Combinational circuits ─────────────────────── -->
+        <section class="content-section" id="combinational-circuits">
+          <h2>Combinational circuits</h2>
+          <p>
+            Combinational circuits combine multiple gates to compute a more
+            complex function. The output at any instant depends only on the
+            current inputs — there is no storage or memory.
+          </p>
+
+          <h3>Multiplexer (MUX)</h3>
+          <p>
+            A multiplexer selects one of several input signals and forwards it
+            to the output, based on the value of a set of
+            <em>select</em> (control) inputs. A 2-to-1 MUX has two data inputs
+            (<code>D0</code>, <code>D1</code>), one select input
+            (<code>S</code>), and one output (<code>Y</code>):
+          </p>
+          <ul>
+            <li>When <code>S = 0</code>: <code>Y = D0</code></li>
+            <li>When <code>S = 1</code>: <code>Y = D1</code></li>
+          </ul>
+          <p>
+            MUXes appear everywhere in CPU data paths — selecting between ALU
+            results, immediate values, and register file outputs to route the
+            right data to the right destination.
+          </p>
+
+          <h3>Binary adder</h3>
+          <p>
+            A <strong>half adder</strong> adds two single bits
+            <code>A</code> and <code>B</code>, producing a <code>Sum</code> and
+            a <code>Carry</code>:
+          </p>
+          <ul>
+            <li><code>Sum = A ⊕ B</code> (XOR)</li>
+            <li><code>Carry = A · B</code> (AND)</li>
+          </ul>
+          <p>
+            A <strong>full adder</strong> adds three bits (two operand bits plus
+            a carry-in from the previous column), enabling multi-bit addition by
+            chaining full adders together into a <em>ripple-carry adder</em>.
+            Gate Lab's built-in adder component implements this logic ready to
+            wire into a larger circuit.
+          </p>
+
+          <h3>Decoder and encoder</h3>
+          <p>
+            A decoder converts a binary code into a one-hot signal (exactly one
+            output is HIGH at a time). A 2-to-4 decoder takes a 2-bit input and
+            drives one of four outputs HIGH based on the binary value. Decoders
+            are used for memory address decoding and 7-segment display control.
+            An encoder does the reverse: converts a one-hot input into a binary
+            code.
+          </p>
+
+          <div class="practice-box">
+            <p>
+              <strong>Sample circuit:</strong> Open the "7-Segment Display"
+              sample in Gate Lab to see a BCD-to-7-segment decoder in action — a
+              direct application of combinational logic.
+            </p>
+            <a class="btn btn-outline" href="app.html">Open 7-Segment Sample</a>
+          </div>
+        </section>
+
+        <!-- ── 6. Sequential logic ───────────────────────────── -->
+        <section class="content-section" id="sequential-logic">
+          <h2>Sequential logic</h2>
+          <p>
+            Sequential circuits add memory to digital logic. Their outputs
+            depend not only on current inputs but also on the
+            <em>history</em> of past inputs — stored as internal state. A clock
+            signal (a square wave toggling between HIGH and LOW at a fixed
+            frequency) synchronises when state updates happen.
+          </p>
+
+          <h3 id="flip-flops">Flip-flops</h3>
+          <p>
+            A flip-flop stores exactly one bit. On each active clock edge
+            (rising or falling), it either holds its value or loads a new one,
+            depending on its type and inputs.
+          </p>
+          <div class="gate-grid">
+            <div class="gate-card">
+              <p class="gate-name">D Flip-Flop</p>
+              <p class="gate-rule">On rising CLK edge: <code>Q ← D</code></p>
+              <p class="gate-desc">
+                The simplest flip-flop. Captures the value of input D on each
+                clock edge and holds it at Q until the next clock edge. Used in
+                registers and pipelines.
+              </p>
+            </div>
+            <div class="gate-card">
+              <p class="gate-name">T Flip-Flop</p>
+              <p class="gate-rule">
+                When <code>T = 1</code>: <code>Q ← ¬Q</code>
+              </p>
+              <p class="gate-desc">
+                Toggles its output when T is HIGH on a clock edge. Directly used
+                to build binary counters: each T flip-flop with T tied HIGH
+                divides the clock frequency by 2.
+              </p>
+            </div>
+            <div class="gate-card">
+              <p class="gate-name">JK Flip-Flop</p>
+              <p class="gate-rule">
+                <code>J=1, K=0</code>: set; <code>J=0, K=1</code>: reset;
+                <code>J=K=1</code>: toggle
+              </p>
+              <p class="gate-desc">
+                The most versatile flip-flop. Subsumes the D and T types as
+                special cases. Eliminates the invalid state of the SR flip-flop.
+              </p>
+            </div>
+            <div class="gate-card">
+              <p class="gate-name">SR Latch</p>
+              <p class="gate-rule">
+                <code>S=1</code>: set Q to 1; <code>R=1</code>: reset Q to 0
+              </p>
+              <p class="gate-desc">
+                The simplest memory element, built from two cross-coupled NOR
+                gates. Has an invalid state when both S and R are HIGH
+                simultaneously.
+              </p>
+            </div>
+          </div>
+
+          <div class="callout">
+            <strong>Clock edge vs. level triggering.</strong> Most flip-flops in
+            Gate Lab are edge-triggered: they only sample inputs at the rising
+            or falling edge of CLK, making timing predictable. SR latches are
+            level-sensitive: their state can change any time the inputs change.
+          </div>
+
+          <h3 id="registers-counters">Registers and counters</h3>
+          <p>
+            A <strong>register</strong> is a group of D flip-flops sharing a
+            common clock and, usually, a common load enable. All flip-flops
+            update simultaneously, capturing a multi-bit value (e.g., 8 or 16
+            bits) in a single clock cycle. Registers hold operands for the ALU,
+            the program counter (PC), and intermediate pipeline results.
+          </p>
+          <p>
+            A <strong>binary counter</strong> increments (or decrements) its
+            stored value by 1 on each clock edge. A 4-bit synchronous counter
+            can count from 0 to 15 before wrapping back to 0. Counters are used
+            in timers, address generators, and loop control in simple state
+            machines.
+          </p>
+          <p>
+            A <strong>shift register</strong> moves all stored bits left or
+            right by one position on each clock edge. Shift registers are used
+            to convert serial data to parallel (SIPO) and vice versa (PISO), and
+            form the basis of CRC error-detection circuits.
+          </p>
+
+          <div class="practice-box">
+            <p>
+              <strong>Sample circuit:</strong> Open the "8-Bit Counter" sample
+              in Gate Lab to see a synchronous binary counter built from
+              flip-flops and combinational logic.
+            </p>
+            <a class="btn btn-outline" href="app.html"
+              >Open 8-Bit Counter Sample</a
+            >
+          </div>
+        </section>
+
+        <!-- ── 7. Memory ─────────────────────────────────────── -->
+        <section class="content-section" id="memory">
+          <h2>Memory: RAM and ROM</h2>
+          <p>
+            Single flip-flops store one bit; registers store a few bytes. For
+            larger amounts of data — programs, lookup tables, frame buffers —
+            circuits use dedicated memory arrays.
+          </p>
+
+          <h3>ROM (Read-Only Memory)</h3>
+          <p>
+            ROM stores data permanently. You specify the contents when building
+            the circuit; the memory cannot be changed during simulation. ROM is
+            used for instruction memory in simple CPUs, lookup tables, and font
+            character bitmaps. In Gate Lab, a ROM component is loaded with
+            values you enter in the built-in memory editor. Provide an address
+            on the address bus, and the output bus immediately presents the
+            stored value.
+          </p>
+
+          <h3>RAM (Random-Access Memory)</h3>
+          <p>
+            RAM can be read and written during simulation. Gate Lab's RAM
+            components (128×4 and 128×8) have an address bus, a data-in bus, a
+            data-out bus, a write-enable (WE) input, and a clock. To write: set
+            the address and data-in, then assert WE before the clock edge. To
+            read: set the address and deassert WE; the stored value appears on
+            data-out.
+          </p>
+          <p>
+            Gate Lab's built-in memory editor lets you pre-load RAM or ROM with
+            values in hexadecimal, making it straightforward to load a simple
+            program into an instruction memory component for a CPU simulation.
+          </p>
+
+          <div class="practice-box">
+            <p>
+              <strong>Sample circuit:</strong> The "Custom 4×4 RAM" sample shows
+              how to wire a 16-cell addressable memory array built entirely from
+              flip-flops — before using Gate Lab's built-in RAM component.
+            </p>
+            <a class="btn btn-outline" href="app.html">Open RAM Sample</a>
+          </div>
+        </section>
+
+        <!-- ── 8. Building a simple CPU ──────────────────────── -->
+        <section class="content-section" id="building-a-cpu">
+          <h2>Building a simple CPU</h2>
+          <p>
+            Every processor, no matter how complex, is built from the components
+            described above. A minimal CPU has five subsystems:
+          </p>
+          <ol>
+            <li>
+              <strong>Instruction memory (ROM)</strong> — stores the program as
+              binary opcodes. Addressed by the program counter.
+            </li>
+            <li>
+              <strong>Program counter (PC)</strong> — an N-bit register that
+              holds the address of the current instruction. Increments by 1 on
+              each cycle; can be loaded with a jump address.
+            </li>
+            <li>
+              <strong>Instruction register (IR)</strong> — captures the current
+              instruction from memory and holds it stable while it is decoded
+              and executed.
+            </li>
+            <li>
+              <strong>ALU (Arithmetic-Logic Unit)</strong> — performs arithmetic
+              (add, subtract) and logic (AND, OR, XOR) operations on two operand
+              inputs and produces a result and condition flags (zero, carry,
+              overflow). Gate Lab's "4-Bit ALU" sample is a starting point.
+            </li>
+            <li>
+              <strong>Control unit</strong> — decodes the opcode and generates
+              the control signals that route data through the data path: which
+              register to read, which ALU operation to perform, whether to write
+              result back to a register or to memory. In Gate Lab this is
+              typically implemented as a programmable custom component or a
+              truth table component.
+            </li>
+          </ol>
+          <p>
+            The basic operation cycle —
+            <strong>fetch → decode → execute</strong> — repeats every clock
+            cycle (or every few cycles in a pipelined design). With Gate Lab's
+            oscilloscope you can visualise the control signals and data bus
+            values across multiple clock cycles to verify correct operation.
+          </p>
+          <div class="callout callout-cyan">
+            <strong>Start small.</strong> Begin with a 4-bit accumulator
+            machine: one ALU, one accumulator register, one 16-word ROM
+            (instruction memory), and a hardwired control unit that only
+            supports ADD, AND, and LOAD instructions. Once that works, extend to
+            a full register file, jumps, and branches.
+          </div>
+        </section>
+
+        <!-- ── 9. Using Gate Lab ─────────────────────────────── -->
+        <section class="content-section" id="using-gate-lab">
+          <h2>Using Gate Lab</h2>
+          <p>
+            Gate Lab is a free, browser-based digital circuit simulator. No
+            download or account is required. Here is a quick-start guide:
+          </p>
+
+          <h3>Interface overview</h3>
+          <ul>
+            <li>
+              <strong>Component panel (left sidebar)</strong> — components are
+              grouped into categories: Input/Output &amp; Timing, Basic Logic
+              Gates, Programmable, Flip-Flops, Registers &amp; Memory, Counters,
+              Multiplexers &amp; Demultiplexers, Bus Systems, Encoders &amp;
+              Decoders, Data Converters, Arithmetic Units, Comparators,
+              Displays, and Test &amp; Measurement. A search bar at the top
+              filters across all categories. Click a component to place it, or
+              drag it onto the canvas.
+            </li>
+            <li>
+              <strong>Canvas</strong> — infinite, pannable workspace. Scroll to
+              zoom. Right-click anywhere on the canvas for a context menu
+              (paste, select all, auto-route wires). Right-clicking a selected
+              component shows component-specific actions (copy, delete, open
+              settings). Right-clicking a selected wire shows optimize and
+              delete options.
+            </li>
+            <li>
+              <strong>Toolbar (top bar)</strong> — simulation controls
+              (play/pause, stop), undo/redo, save/load, import/export,
+              collaborate, and propagation delay toggle.
+            </li>
+            <li>
+              <strong>Properties panel</strong> — double-click a component to
+              open its settings dialog. Depending on the component, you can
+              change bit width, initial value, clock frequency, duty cycle, and
+              more.
+            </li>
+          </ul>
+
+          <h3>Drawing wires</h3>
+          <p>
+            Click an output pin to start drawing a wire, then click the target
+            input or control pin to complete the connection. Wires route
+            automatically. Click an existing wire to select it; press Delete to
+            remove it. To delete a connection at a pin, click the pin that
+            already has a wire attached.
+          </p>
+
+          <h3>Running a simulation</h3>
+          <p>
+            Press <kbd>Shift+Space</kbd> (or the Play button) to start or pause
+            the simulation. Press <kbd>Ctrl+Shift+Space</kbd> (or the Stop
+            button) to stop the simulation and reset all signal states. Input
+            components toggle between HIGH (1) and LOW (0) when clicked during
+            simulation. Clock components pulse automatically at their configured
+            frequency. Active (HIGH) wires are highlighted in teal; inactive
+            (LOW) wires remain gray. Use the propagation delay toggle to slow
+            signal propagation and trace logic step by step.
+          </p>
+
+          <h3>Using the oscilloscope</h3>
+          <p>
+            Place an oscilloscope component on the canvas. It has one input pin
+            per channel, labelled <code>CH0</code>, <code>CH1</code>, and so on.
+            Connect any wire directly to a channel pin — the same way you would
+            connect any other component. During simulation the scope draws a
+            continuous waveform for each connected channel, scrolling left to
+            right. The 1-channel variant is free; 2-, 4-, and 8-channel variants
+            are available with a Pro subscription.
+          </p>
+
+          <h3>Custom scripted components</h3>
+          <p>
+            Gate Lab has two programmable component types in the
+            <strong>Programmable</strong> category:
+          </p>
+          <ul>
+            <li>
+              <strong>Custom Component</strong> — combinational logic only. The
+              script body runs every time any input changes. No clock or
+              persistent state.
+            </li>
+            <li>
+              <strong>Custom Sequential Component</strong> — clocked logic with
+              persistent state. The script body runs on each rising edge of the
+              designated clock pin.
+            </li>
+          </ul>
+          <p>
+            Both use the same scripting language. A script has two parts: a
+            header section and a logic body. The header declares the component's
+            interface using keyword lines:
+          </p>
+          <ul>
+            <li>
+              <code>inputs: A, B, Data[8]</code> — input pins (use
+              <code>[N]</code> for N-bit buses)
+            </li>
+            <li><code>outputs: Result[8], Carry</code> — output pins</li>
+            <li>
+              <code>clock: CLK</code> — clock pin (sequential components only)
+            </li>
+            <li>
+              <code>state: counter[8], ram[16][8]</code> — variables that
+              persist between clock cycles (sequential only)
+            </li>
+            <li>
+              <code>vars: temp</code> — scratch variables; reset to 0 before
+              each execution
+            </li>
+          </ul>
+          <p>
+            The logic body is a flat sequence of statements ending with
+            semicolons. All values are 64-bit signed integers; 0 is LOW and any
+            non-zero value is HIGH. Supported operations include arithmetic
+            (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>,
+            <code>%</code>), bitwise (<code>&amp;</code>, <code>|</code>,
+            <code>^</code>, <code>~</code>, <code>&lt;&lt;</code>,
+            <code>&gt;&gt;</code>), comparison (<code>==</code>,
+            <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>), and
+            <code>if / else</code> conditionals. Comments start with
+            <code>#</code>.
+          </p>
+          <p>
+            Refer to the full
+            <a href="scripting.html">scripting language reference</a>
+            for the complete syntax and worked examples. Custom components can
+            be saved and reused across circuits.
+          </p>
+
+          <div class="practice-box">
+            <p>
+              <strong>Ready to start?</strong> Open Gate Lab and try recreating
+              the 2-to-1 MUX from this guide using only AND, OR, and NOT gates —
+              then compare it to the built-in MUX component.
+            </p>
+            <a class="btn btn-primary" href="app.html">LAUNCH GATE LAB</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ── Footer ───────────────────────────────────────────────── -->
+    <footer class="footer" aria-label="Footer">
+      <span
+        ><strong style="color: var(--text)">Gate Lab</strong> &nbsp;© 2026 —
+        LGSIM</span
+      >
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="learn.html" aria-current="page">Learn</a>
+        <a href="scripting.html">Scripting</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
+    </footer>
+  </body>
+</html>

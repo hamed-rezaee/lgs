@@ -114,11 +114,6 @@
           "No installation required — runs in browser"
         ],
         "screenshot": "https://lgsim.io/icons/Icon-512.png",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "1250"
-        },
         "author": {
           "@type": "Organization",
           "name": "Gate Lab Team",
@@ -171,6 +166,22 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes. Gate Lab supports real-time multiplayer collaboration. Share your session link and other users can join instantly — no account needed. Everyone can place components, draw wires, and run the simulation together, with each participant's cursor visible to the group."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use Gate Lab to learn computer architecture or design a CPU?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Gate Lab includes every primitive needed to build a working processor: multi-bit adders and comparators for the ALU, RAM and ROM for memory, registers for the register file and program counter, multiplexers for the data path, and programmable custom components for the control unit. The included 4-Bit ALU sample is a good starting point."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I save and share a circuit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use File → Save (Ctrl+S) to download a .lgs file. Re-open it with Ctrl+L (Restore Workspace). To share a live session, use the Collaborate button to generate a URL — anyone who opens the link joins instantly without an account. Use File → Export Image to save a PNG snapshot for documentation."
             }
           }
         ]
@@ -841,8 +852,10 @@
         <div class="nav-actions">
           <a class="nav-link" href="#features">Features</a>
           <a class="nav-link" href="#gallery">Samples</a>
+          <a class="nav-link" href="learn.html">Learn</a>
+          <a class="nav-link" href="scripting.html">Scripting</a>
           <a class="nav-link" href="#faq">FAQ</a>
-          <a class="btn btn-primary" href="app.html">Launch App</a>
+          <a class="btn btn-primary" href="app.html">LAUNCH GATE LAB</a>
         </div>
       </div>
     </nav>
@@ -863,7 +876,9 @@
             real-time simulation and live collaboration.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="app.html">Launch App</a>
+            <a class="btn btn-primary btn-lg" href="app.html"
+              >LAUNCH GATE LAB</a
+            >
             <a class="btn btn-outline btn-lg" href="#gallery">View Examples</a>
           </div>
           <div class="hero-stats">
@@ -969,6 +984,146 @@
 
     <div class="divider"></div>
 
+    <!-- ── How It Works ────────────────────────────────────────── -->
+    <section class="section" id="how-it-works" aria-label="How it works">
+      <div class="container">
+        <header class="reveal">
+          <p class="section-label">Workflow</p>
+          <h2 class="section-title">Three steps to a working circuit</h2>
+          <p class="section-sub">
+            From a blank canvas to a running simulation in minutes — no setup
+            required.
+          </p>
+        </header>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 48px;
+          "
+        >
+          <article
+            class="feature-card reveal"
+            style="border-top-color: var(--green)"
+          >
+            <p
+              style="
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--green);
+                margin-bottom: 12px;
+              "
+            >
+              01
+            </p>
+            <h3 class="feature-title">Place Components</h3>
+            <p class="feature-desc">
+              Open the component panel and drag any gate, flip-flop, memory
+              block, or display onto the infinite canvas. Resize, rotate, and
+              label each part freely. Every component updates live as you work.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <p
+              style="
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--green);
+                margin-bottom: 12px;
+              "
+            >
+              02
+            </p>
+            <h3 class="feature-title">Connect Wires</h3>
+            <p class="feature-desc">
+              Click any output pin and drag to an input pin to draw a wire.
+              Wires auto-route around components. Multi-bit buses carry parallel
+              signals, and signal tunnels link distant parts of a large circuit
+              without clutter.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <p
+              style="
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--green);
+                margin-bottom: 12px;
+              "
+            >
+              03
+            </p>
+            <h3 class="feature-title">Simulate &amp; Observe</h3>
+            <p class="feature-desc">
+              Toggle inputs, drive a clock, and watch signal states propagate in
+              real time. Attach an oscilloscope to any wire to record waveforms
+              over multiple clock cycles. Export the circuit or share a live
+              session link.
+            </p>
+          </article>
+        </div>
+        <p class="reveal" style="margin-top: 32px; text-align: center">
+          <a class="btn btn-outline" href="learn.html"
+            >Learn digital logic basics</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Use Cases ────────────────────────────────────────────── -->
+    <section class="section" id="use-cases" aria-label="Use cases">
+      <div class="container">
+        <header class="reveal">
+          <p class="section-label">Who uses it</p>
+          <h2 class="section-title">Built for learners and professionals</h2>
+        </header>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 48px;
+          "
+        >
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Students</h3>
+            <p class="feature-desc">
+              Verify homework problems, explore truth tables, and build complete
+              processor designs for coursework. Gate Lab's visual feedback makes
+              abstract Boolean algebra tangible. It is a free Logisim
+              alternative that runs entirely in the browser — no lab
+              installation needed.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Educators</h3>
+            <p class="feature-desc">
+              Share a pre-built circuit link so every student opens the same
+              starting point instantly. Use the real-time collaboration feature
+              to walk through a design live in class or during an online
+              lecture. Save time grading by asking students to export and submit
+              their <code>.lgs</code> files.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <h3 class="feature-title">Engineers &amp; Hobbyists</h3>
+            <p class="feature-desc">
+              Prototype combinational and sequential logic before committing to
+              hardware. Use programmable custom components to test novel
+              architectures — ALUs, RISC CPU control units, custom memory
+              controllers — and validate logic correctness before moving to an
+              FPGA or PCB.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- ── Gallery ─────────────────────────────────────────────── -->
     <section class="section gallery" id="gallery" aria-label="Sample circuits">
       <div class="container">
@@ -980,7 +1135,134 @@
         </div>
 
         <div class="gallery-scroll" id="gallery-grid">
-          <!-- Cards rendered by JS -->
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/4_bit_alu_dark.webp"
+                alt="4-Bit ALU circuit diagram — Arithmetic logic unit"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">4-Bit ALU</p>
+              <p class="gallery-desc">Arithmetic logic unit</p>
+            </div>
+          </article>
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/7_segment_dark.webp"
+                alt="7-Segment Display circuit diagram — BCD decoder and display driver"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">7-Segment Display</p>
+              <p class="gallery-desc">BCD decoder and display driver</p>
+            </div>
+          </article>
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/8_bit_counter_dark.webp"
+                alt="8-Bit Counter circuit diagram — Synchronous binary counter"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">8-Bit Counter</p>
+              <p class="gallery-desc">Synchronous binary counter</p>
+            </div>
+          </article>
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/custom_4x4_ram_dark.webp"
+                alt="Custom 4×4 RAM circuit diagram — Addressable memory array"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">Custom 4×4 RAM</p>
+              <p class="gallery-desc">Addressable memory array</p>
+            </div>
+          </article>
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/invader_matrix_display_dark.webp"
+                alt="Matrix Display circuit diagram — Space invader dot-matrix"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">Matrix Display</p>
+              <p class="gallery-desc">Space invader dot-matrix</p>
+            </div>
+          </article>
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/keyboard_driver_dark.webp"
+                alt="Keyboard Driver circuit diagram — PS/2 keyboard interface"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">Keyboard Driver</p>
+              <p class="gallery-desc">PS/2 keyboard interface</p>
+            </div>
+          </article>
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/keypad_4x4_driver_dark.webp"
+                alt="4×4 Keypad Driver circuit diagram — Matrix keypad scanner"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">4×4 Keypad Driver</p>
+              <p class="gallery-desc">Matrix keypad scanner</p>
+            </div>
+          </article>
+          <article class="gallery-card reveal">
+            <div class="gallery-img-wrap">
+              <img
+                src="images/samples/lcd_hello_world_dark.webp"
+                alt="LCD Hello World circuit diagram — Character LCD controller"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              />
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-name">LCD Hello World</p>
+              <p class="gallery-desc">Character LCD controller</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1218,6 +1500,51 @@
               </p>
             </div>
           </details>
+
+          <details
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="faq-question" itemprop="name">
+              Can I use Gate Lab to learn computer architecture or design a CPU?
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </summary>
+            <div
+              class="faq-answer"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Yes. Gate Lab includes every primitive you need to build a
+                working processor: multi-bit adders and comparators for the ALU,
+                RAM and ROM for instruction and data memory, registers for the
+                register file and program counter, multiplexers for the data
+                path, and programmable custom components for the control unit.
+                The included sample circuit "4-Bit ALU" is a good starting point
+                — it shows how to combine an adder, a logic unit, and a
+                function-select multiplexer into a single arithmetic unit. From
+                there, add an instruction register, a program counter, and a
+                simple state machine for fetch-decode-execute, and you have a
+                minimal working CPU running inside your browser.
+              </p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -1233,7 +1560,7 @@
             <p>Open the simulator in your browser — no download, no sign-up.</p>
           </div>
           <a class="btn btn-primary btn-lg" href="app.html">
-            Launch Gate Lab
+            LAUNCH GATE LAB
           </a>
         </div>
       </div>
@@ -1245,9 +1572,11 @@
         <div class="footer-inner">
           <div class="footer-brand">
             <strong>Gate Lab</strong>
-            <span>© 2026 — LGSIM</span>
+            <span>© 2026 LGSIM.IO</span>
           </div>
           <nav class="footer-links" aria-label="Footer navigation">
+            <a href="learn.html">Learn</a>
+            <a href="scripting.html">Scripting</a>
             <a href="privacy.html"><b>Privacy Policy</b></a>
           </nav>
         </div>
@@ -1266,6 +1595,8 @@
       );
 
       // ── Gallery data ──────────────────────────────────────────
+      // Gallery cards are rendered as static HTML for SEO / no-JS support.
+      // The JS below is kept for reference only and does NOT re-render.
       const circuits = [
         { id: '4_bit_alu', name: '4-Bit ALU', desc: 'Arithmetic logic unit' },
         {
@@ -1306,31 +1637,7 @@
       ];
 
       function renderGallery() {
-        const grid = document.getElementById('gallery-grid');
-        grid.innerHTML = circuits
-          .map(
-            (c) => `
-          <article class="gallery-card reveal">
-            <div class="gallery-img-wrap">
-              <img
-                src="images/samples/${c.id}_dark.webp"
-                alt="${c.name} circuit diagram — ${c.desc}"
-                loading="lazy"
-                decoding="async"
-                width="320"
-                height="240"
-              />
-            </div>
-            <div class="gallery-info">
-              <p class="gallery-name">${c.name}</p>
-              <p class="gallery-desc">${c.desc}</p>
-            </div>
-          </article>
-        `,
-          )
-          .join('');
-        // Re-observe new cards
-        observeReveal();
+        // Static HTML cards are already in the DOM for SEO — nothing to render here.
       }
 
       // ── Scroll-reveal ─────────────────────────────────────────
