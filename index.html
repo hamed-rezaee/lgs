@@ -102,7 +102,7 @@
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "featureList": [
           "Real-time multi-user collaboration",
-          "Hub mode: instructor courses and student assignment submission",
+          "Lab Hub: instructor courses and student assignment submission",
           "Interactive drag-and-drop circuit simulator",
           "Logic gates: AND, OR, NOT, XOR, NAND, NOR, XNOR",
           "Flip-flops: D, T, JK, SR latches",
@@ -171,10 +171,10 @@
           },
           {
             "@type": "Question",
-            "name": "What is Hub mode?",
+            "name": "What is Lab Hub?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Hub mode is a built-in course management system for instructors and students. Instructors create courses, upload .lgs lab files as assignments, and review student submissions. Students join a course with a join code, open assigned labs directly in the simulator, and submit their work with one click. A free account (email and password) is required."
+              "text": "Lab Hub is a built-in course management system for instructors and students. Instructors create courses, upload .lgs lab files as assignments, and review student submissions. Students join a course with a join code, open assigned labs directly in the simulator, and submit their work with one click. A free account (email and password) is required."
             }
           },
           {
@@ -622,6 +622,21 @@
         font-size: 14px;
         color: var(--muted);
         line-height: 1.7;
+      }
+
+      .badge-soon {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--bg);
+        background: var(--cyan);
+        border-radius: 2px;
+        padding: 2px 7px;
+        margin-left: 8px;
+        vertical-align: middle;
+        line-height: 1.6;
       }
 
       /* ─── Gallery ──────────────────────────────────────────── */
@@ -1110,12 +1125,13 @@
           <article class="feature-card reveal">
             <h3 class="feature-title">Educators</h3>
             <p class="feature-desc">
-              Use <strong>Hub mode</strong> to create courses, upload
-              assignments, and collect student submissions — all inside Gate
-              Lab. Share a join code and students can open the assigned
+              Use <strong>Lab Hub</strong>
+              <span class="badge-soon">Releasing Soon</span> to create courses,
+              upload assignments, and collect student submissions — all inside
+              Gate Lab. Share a join code and students can open the assigned
               assignment directly in the simulator. Use real-time collaboration
-              to walk through a design live in class. No external grading tools
-              required.
+              <span class="badge-soon">Releasing Soon</span> to walk through a
+              design live in class. No external grading tools required.
             </p>
           </article>
           <article class="feature-card reveal">
@@ -1479,7 +1495,7 @@
             itemtype="https://schema.org/Question"
           >
             <summary class="faq-question" itemprop="name">
-              What is Hub mode?
+              What is Lab Hub? <span class="badge-soon">Releasing Soon</span>
               <svg
                 class="faq-chevron"
                 viewBox="0 0 16 16"
@@ -1502,14 +1518,14 @@
               itemtype="https://schema.org/Answer"
             >
               <p itemprop="text">
-                Hub mode is a built-in course management system. Instructors
+                Lab Hub is a built-in course management system. Instructors
                 create courses and upload <code>.lgs</code> lab files as
                 assignments. Students join a course using a join code, open the
                 assigned lab directly in the simulator, and submit their
                 completed work with one click. Instructors can then open and
                 review each submission. A free account (email and password) is
                 required — open
-                <strong>Collaboration → Hub</strong>
+                <strong>Collaboration → Lab Hub</strong>
                 to get started.
               </p>
             </div>
@@ -1523,6 +1539,7 @@
           >
             <summary class="faq-question" itemprop="name">
               Can I collaborate with others?
+              <span class="badge-soon">Releasing Soon</span>
               <svg
                 class="faq-chevron"
                 viewBox="0 0 16 16"

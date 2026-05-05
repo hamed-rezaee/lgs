@@ -14,7 +14,7 @@ This guide details the features, controls, and components available in Gate Lab.
 - Files, Import/Export
 - Component Catalog
 - Programmable Components & Scripting
-- Hub Mode
+- Lab Hub
 - Troubleshooting
 
 ---
@@ -204,7 +204,7 @@ Note: Undo (**Ctrl+Z**) and Redo (**Ctrl+Y**) are available as dedicated buttons
 
 ### Collaboration menu
 
-- **Hub** (**Alt+Shift+L**): open the hub panel (sign in/up required)
+- **Lab Hub** (**Alt+Shift+L**): open the Lab Hub panel (sign in/up required)
 - **Collaboration Session** (**Alt+Shift+C**): open the real-time collaboration panel to host or join a session
 
 ### Help menu
@@ -432,13 +432,13 @@ See the Script Syntax Guide in the Help menu for a complete reference of the scr
 
 ---
 
-## 11. Hub Mode
+## 11. Lab Hub
 
-Hub mode connects instructors and students through a shared course system backed by cloud storage. It requires an account (email + password) and an internet connection.
+Lab Hub connects instructors and students through a shared course system backed by cloud storage. It requires an account (email + password) and an internet connection.
 
 ### Access
 
-- **Collaboration → Hub** (**Alt+Shift+L**) in the top menu bar.
+- **Collaboration → Lab Hub** (**Alt+Shift+L**) in the top menu bar.
 - If you are not signed in, the sign-in/sign-up dialog appears first.
 
 ### Sign up / Sign in
@@ -498,7 +498,7 @@ Once a lab is open:
 3. Confirm the submission. Your current workspace is uploaded and recorded under your account.
 4. A snack-bar confirms success.
 
-> **Note:** You must open a lab from the Hub menu before you can submit. Attempting to submit without an active assignment shows an error prompt.
+> **Note:** You must open a lab from the Lab Hub menu before you can submit. Attempting to submit without an active assignment shows an error prompt.
 
 ---
 
