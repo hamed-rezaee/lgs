@@ -102,6 +102,7 @@
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "featureList": [
           "Real-time multi-user collaboration",
+          "Hub mode: instructor courses and student assignment submission",
           "Interactive drag-and-drop circuit simulator",
           "Logic gates: AND, OR, NOT, XOR, NAND, NOR, XNOR",
           "Flip-flops: D, T, JK, SR latches",
@@ -166,6 +167,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes. Gate Lab supports real-time multiplayer collaboration. Share your session link and other users can join instantly — no account needed. Everyone can place components, draw wires, and run the simulation together, with each participant's cursor visible to the group."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Hub mode?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hub mode is a built-in course management system for instructors and students. Instructors create courses, upload .lgs lab files as assignments, and review student submissions. Students join a course with a join code, open assigned labs directly in the simulator, and submit their work with one click. A free account (email and password) is required."
             }
           },
           {
@@ -1101,11 +1110,12 @@
           <article class="feature-card reveal">
             <h3 class="feature-title">Educators</h3>
             <p class="feature-desc">
-              Share a pre-built circuit link so every student opens the same
-              starting point instantly. Use the real-time collaboration feature
-              to walk through a design live in class or during an online
-              lecture. Save time grading by asking students to export and submit
-              their <code>.lgs</code> files.
+              Use <strong>Hub mode</strong> to create courses, upload
+              assignments, and collect student submissions — all inside Gate
+              Lab. Share a join code and students can open the assigned
+              assignment directly in the simulator. Use real-time collaboration
+              to walk through a design live in class. No external grading tools
+              required.
             </p>
           </article>
           <article class="feature-card reveal">
@@ -1458,6 +1468,49 @@
                 beyond the standard library — from a custom ALU operation to a
                 complete processor control unit — and reuse it as a component
                 anywhere in your circuit.
+              </p>
+            </div>
+          </details>
+
+          <details
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="faq-question" itemprop="name">
+              What is Hub mode?
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </summary>
+            <div
+              class="faq-answer"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Hub mode is a built-in course management system. Instructors
+                create courses and upload <code>.lgs</code> lab files as
+                assignments. Students join a course using a join code, open the
+                assigned lab directly in the simulator, and submit their
+                completed work with one click. Instructors can then open and
+                review each submission. A free account (email and password) is
+                required — open
+                <strong>Collaboration → Hub</strong>
+                to get started.
               </p>
             </div>
           </details>

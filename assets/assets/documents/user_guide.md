@@ -1,4 +1,4 @@
-# Gate Lab — User Guide
+﻿# Gate Lab — User Guide
 
 This guide details the features, controls, and components available in Gate Lab.
 
@@ -14,6 +14,7 @@ This guide details the features, controls, and components available in Gate Lab.
 - Files, Import/Export
 - Component Catalog
 - Programmable Components & Scripting
+- Hub Mode
 - Troubleshooting
 
 ---
@@ -203,6 +204,7 @@ Note: Undo (**Ctrl+Z**) and Redo (**Ctrl+Y**) are available as dedicated buttons
 
 ### Collaboration menu
 
+- **Hub** (**Alt+Shift+L**): open the hub panel (sign in/up required)
 - **Collaboration Session** (**Alt+Shift+C**): open the real-time collaboration panel to host or join a session
 
 ### Help menu
@@ -255,6 +257,11 @@ Components are available in the **Components toolbar** (left).
   - Implemented behavior: `Y = A AND EN`.
   - Note: although the UI text refers to High-Z, the simulator represents signals as booleans; disabled effectively drives LOW.
 - **CLOCK**: configurable clock generator with **EN**; outputs a square wave.
+- **DELAY GATE**: models RC capacitor-like signal delay behavior.
+  - Input: **A**, Output: **Y**
+  - **Delay**: rising edge (LOW → HIGH) is delayed by n ticks; falling edge (HIGH → LOW) is immediate.
+  - If input goes LOW before the delay completes, the tick counter resets and the output stays LOW.
+  - Configure via context menu → Configuration.
 - **KEYBOARD INPUT**: captures physical keyboard input when **EN** is HIGH. Outputs an 8-bit ASCII code on **D0..D7** and sends a short pulse on the **STR** (Strobe) pin on key press.
 - **KEYPAD 4x4**: 4×4 matrix keypad.
   - Inputs **C0-C3** (columns), outputs **R0-R3** (rows).
@@ -425,7 +432,77 @@ See the Script Syntax Guide in the Help menu for a complete reference of the scr
 
 ---
 
-## 11. Troubleshooting
+## 11. Hub Mode
+
+Hub mode connects instructors and students through a shared course system backed by cloud storage. It requires an account (email + password) and an internet connection.
+
+### Access
+
+- **Collaboration → Hub** (**Alt+Shift+L**) in the top menu bar.
+- If you are not signed in, the sign-in/sign-up dialog appears first.
+
+### Sign up / Sign in
+
+1. Choose **Sign Up** if you do not have an account yet, or **Sign In** if you do.
+2. On sign-up, enter a **Display Name**, choose a **Role** (Student or Instructor), then provide an email and password.
+3. On sign-in, enter your email and password.
+4. Use **Sign Out** inside the dashboard to log out.
+
+---
+
+### Instructor workflow
+
+After signing in as an **Instructor** the **Instructor Dashboard** opens automatically.
+
+#### Courses
+
+- **Create a course**: click **New Course**, enter a name. A unique 6-character **join code** is generated and shown on the course card.
+- **Delete a course**: click the delete icon on the course card. Deletion is blocked if any students are still enrolled.
+
+#### Assignments
+
+- Click a course to open its assignment list.
+- **Upload Assignment**: click **Upload Assignment**, pick a `.lgs` file from your computer, then fill in a title and description. The assignment file is uploaded to cloud storage and attached to the course.
+- Click an assignment to view its submissions.
+
+#### Submissions
+
+- Each submitted workspace is listed with the student's ID and submission time.
+- Click a submission to load it into the canvas for review.
+
+---
+
+### Student workflow
+
+After signing in as a **Student** the **Courses** dialog opens automatically.
+
+#### Joining a course
+
+1. Click **Join Course**.
+2. Enter the **join code** provided by your instructor (case-insensitive).
+3. The course appears in your course list.
+
+#### Opening a lab
+
+1. Click a course to see its assignments.
+2. Click **Open** on an assignment.
+3. If the canvas is not empty, you will be prompted to confirm — opening a lab replaces the current workspace.
+4. The lab file is downloaded and loaded into the canvas.
+
+#### Submitting an assignment
+
+Once a lab is open:
+
+1. Work on the circuit as normal.
+2. Go to **File → Submit Assignment** (or trigger it from the app bar).
+3. Confirm the submission. Your current workspace is uploaded and recorded under your account.
+4. A snack-bar confirms success.
+
+> **Note:** You must open a lab from the Hub menu before you can submit. Attempting to submit without an active assignment shows an error prompt.
+
+---
+
+## 12. Troubleshooting
 
 - **Can’t paste**: paste is only enabled after you copy at least one component.
 - **Wire won’t connect**: ensure you’re connecting output↔input (same-direction cancels).
